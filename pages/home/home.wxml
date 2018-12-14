@@ -1,0 +1,48 @@
+<!-- 广告通知部分 -->
+<view class='home_top'>
+  <view class='home_top_left'>
+    <image src='../../image/logo.jpg'>
+    </image>
+  </view>
+  <view class='home_top_center'>
+    <swiper class='swiper-box' autoplay='{{true}}' interval='2000' vertical='{{true}}' circular='{{true}}'>
+      <swiper-item class='item' wx:for='{{txtlist}}'>{{index + 1}}、{{item}}</swiper-item>
+    </swiper>
+  </view>
+  <view class='home_top_right'>
+    <image src='../../image/logo.jpg'></image>
+  </view>
+</view>
+<!-- 业务入口 -->
+<view class='home_center'>
+  <!-- 上半部分 -->
+  <view class='home_center_text'>
+    <!-- 待我审批 -->
+    <view class='home_text'>
+      <image src='../../image/logo.jpg'></image>
+      <text>我发起的</text>
+    </view>
+    <!-- 我发起的 -->
+    <view class='home_text'>
+      <image src='../../image/logo.jpg'></image>
+      <text>待我审批</text>
+    </view>
+  </view>
+  <!-- 下半部分 -->
+  <view class='home_center_text'>
+    <!-- 我审批的 -->
+    <view class='home_text'>
+      <image src='../../image/logo.jpg'></image>
+      <text>我审批的</text>
+    </view>
+    <!-- 工作日志 -->
+    <view class='home_text'>
+      <image src='../../image/logo.jpg'></image>
+      <text>工作日志</text>
+    </view>
+  </view>
+</view>
+<!-- 数据统计 -->
+<view class='home_bottom'>
+
+</view>

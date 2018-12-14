@@ -1,0 +1,143 @@
+page {
+  background: #f4f4f6;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+/* 情况按钮 */
+
+.travel_top {
+  width: 90%;
+  margin-top: 20rpx;
+}
+
+.travel_top button {
+  background: #f4f4f6;
+  border: 1px solid #8ebaf9;
+  border-radius: 30rpx;
+  padding: 0rpx 50rpx;
+  font-size: 26rpx;
+  height: 1.8rem;
+  color: #8ebaf9;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  float: right;
+}
+
+/* 三步走 */
+
+.travel_centent {
+  width: 100%;
+  background: #fff;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 20rpx;
+}
+
+.travel_centent view {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 26rpx;
+  padding: 20rpx 20rpx;
+}
+
+.view-border {
+  border-bottom: 4rpx solid #8ebaf9;
+}
+
+.travel_bottom {
+  margin-top: 20rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  line-height: 80rpx;
+}
+
+.travel_bottom text {
+  font-size: 32rpx;
+}
+
+.travel_bottom button {
+  background: #8ebaf7;
+  border: 1px solid #8ebaf7;
+  border-radius: 20rpx;
+  padding: 0rpx 50rpx;
+  font-size: 26rpx;
+  height: 1.8rem;
+  color: #fff;
+}
+
+.travel_table {
+  margin-top: 20rpx;
+  width: 100%;
+  padding: 10rpx 20rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.table_title {
+  background: #9dd3ed;
+  width: 95%;
+  display: flex;
+  justify-content: space-between;
+  padding: 10rpx 20rpx;
+  font-size: 26rpx;
+}
+
+.title_one {
+  color: #fff;
+}
+
+.title_two {
+  color: #f85452;
+}
+
+.table_centent {
+  background: #fff;
+  width: 96%;
+  padding: 20rpx 15rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 26rpx;
+  border-bottom: 1px solid #f4f4f6;
+}
+
+.table_centent input {
+  height: 1rem;
+  min-height: 1rem;
+}
+
+.placeholder_input {
+  text-align: right;
+}
+.travel_btn{
+  position: absolute;
+  bottom: 0rpx;
+  display: flex;
+  flex: row;
+  width: 100%
+}
+.travel_btn button{
+  width: 50%;
+  border: 0rpx solid #8ebaf7;
+  border-radius: 0rpx;
+  color: #fff
+}
+.btn_up{
+  background: #d1d2d4
+}
+.btn_dow{
+  background: #8ebaf7
+}

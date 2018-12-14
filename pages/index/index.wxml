@@ -1,13 +1,15 @@
-<!--index.wxml-->
-<view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
+<!-- 头部标题加背景 -->
+<view class='login_top'>
+  <text class='login_top_text'>OA财务报销系统</text>
+</view>
+<!-- 登录框 -->
+<view class='login_from'>
+  <input maxlength="10" placeholder="请输入您的账号" placeholder-class="placeholder_input" />
+  <input maxlength="10" placeholder="请输入您的密码" placeholder-class="placeholder_input" />
+  <view class='login_from_text'>
+    <text>忘记密码？</text>
   </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
+  <view class='login_from_btn'>
+    <button>立即登录</button>
   </view>
 </view>

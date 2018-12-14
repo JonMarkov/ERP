@@ -1,0 +1,40 @@
+<view class='out'>
+  <!-- 基本信息 -->
+  <view class='out_basic'>
+    <view class='basic_content'>
+      <text>申请人员：</text>
+      <text>macong</text>
+    </view>
+    <view class='basic_content'>
+      <text>申请日期：</text>
+      <text>2018-08-08 14:09</text>
+    </view>
+    <view class='basic_content'>
+      <text>车辆型号：</text>
+      <text>别克GL8</text>
+    </view>
+    <view class='basic_content'>
+      <text>车牌号：</text>
+      <text>京A88888</text>
+    </view>
+    <view class='basic_content'>
+      <text>出差事由：</text>
+      <text>送人</text>
+    </view>
+    <view class='basic_content'>
+      <text>目的地：</text>
+      <text>西三旗</text>
+    </view>
+    <view class='basic_content'>
+      <text>同车人员:</text>
+      <text>张三，李四</text>
+    </view>
+    <view class='basic_content'>
+      <text>驾驶员:</text>
+      <text>阿虎</text>
+    </view>
+    <view>
+      sds
+    </view>
+  </view>
+</view>

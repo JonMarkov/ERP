@@ -1,0 +1,67 @@
+<!-- 清空按钮 -->
+<view class='travel_top'>
+  <button>清空当前页面</button>
+</view>
+<!-- 三步走 -->
+<view class='travel_centent'>
+  <view class='view-border'>
+    <text>步骤一</text>
+    <text>基本信息填写</text>
+  </view>
+  <view>
+    <text>步骤二</text>
+    <text>费用明细填写</text>
+  </view>
+  <view>
+    <text>步骤三</text>
+    <text>报销金额确认</text>
+  </view>
+</view>
+<!-- 点击增加输入内容 -->
+<view class='travel_bottom'>
+  <text>费用明细</text>
+  <button>添加费用明细</button>
+</view>
+<!-- 输入内容详情 -->
+<view class='travel_table'>
+  <view class='table_title'>
+    <text class='title_one'>车船费</text>
+    <text class='title_two'>删除</text>
+  </view>
+
+  <view class='table_centent'>
+    <text>人数:</text>
+    <input maxlength="10" placeholder="请输入您的账号" placeholder-class="placeholder_input" />
+  </view>
+  <view class='table_centent'>
+    <text>时间:</text>
+    <view class="section">
+      <picker mode="date" value="{{date}}" start="2015-09-01" end="2017-09-01" bindchange="bindStartDateChange">
+        <view class="picker">
+          {{startDate}}
+        </view>
+      </picker>
+    </view>
+    <text>-</text>
+    <view class="section">
+      <picker mode="date" value="{{date}}" start="2015-09-01" end="2017-09-01" bindchange="bindEndDateChange">
+        <view class="picker">
+          {{endDate}}
+        </view>
+      </picker>
+    </view>
+  </view>
+  <view class='table_centent'>
+    <text>交通工具</text>
+    <text>人数</text>
+  </view>
+  <view class='table_centent'>
+    <text>金额</text>
+    <text>人数</text>
+  </view>
+</view>
+<!-- 按钮 -->
+<view class='travel_btn'>
+  <button class='btn_up'>返回上一步</button>
+  <button class='btn_dow'>下一步</button>
+</view>

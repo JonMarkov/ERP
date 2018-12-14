@@ -1,0 +1,48 @@
+<view class='out'>
+  <!-- 基本信息 -->
+  <view class='out_basic'>
+    <view class='basic_content'>
+      <text>申请人员：</text>
+      <text>macong</text>
+    </view>
+    <view class='basic_content'>
+      <text>申请日期：</text>
+      <text>2018-08-08 14:09</text>
+    </view>
+    <view class='basic_content'>
+      <text>来访单位</text>
+      <text>北京博众原创</text>
+    </view>
+    <view class='basic_content'>
+      <text>出差事由：</text>
+      <text>吃饭</text>
+    </view>
+    <view class='basic_content'>
+      <text>用餐地点：</text>
+      <text>酒店</text>
+    </view>
+    <view class='basic_content'>
+      <text>住宿地点：</text>
+      <text>酒店</text>
+    </view>
+    <view class='basic_content'>
+      <text>来访人数:</text>
+      <text>3</text>
+    </view>
+    <view class='basic_content'>
+      <text>来访人员:</text>
+      <text>张三，李四，王五</text>
+    </view>
+    <view class='basic_content'>
+      <text>陪同人数:</text>
+      <text>1</text>
+    </view>
+    <view class='basic_content'>
+      <text>陪同人员:</text>
+      <text>张三</text>
+    </view>
+    <view>
+      sds
+    </view>
+  </view>
+</view>

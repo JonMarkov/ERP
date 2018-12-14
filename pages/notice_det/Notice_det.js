@@ -1,4 +1,4 @@
-// pages/index/index.js
+// pages/notice_det/Notice_det.js
 Page({
 
   /**

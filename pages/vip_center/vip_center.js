@@ -1,4 +1,4 @@
-// pages/index/index.js
+// pages/vip_center/vip_center.js
 Page({
 
   /**

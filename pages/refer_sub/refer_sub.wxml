@@ -1,0 +1,41 @@
+<!-- 报销单 -->
+<view class='refer'>
+  <view class='refer_title'>
+    <text>报销单</text>
+  </view>
+  <view class='sub_con'>
+    <text class='sub_blue'>出差旅费报销单</text>
+    <text class='sub_gray'>工程项目审批</text>
+  </view>
+  <view class='sub_con'>
+    <text class='sub_gray'>借款申请单</text>
+    <text class='sub_gray'>费用支付审批单</text>
+  </view>
+</view>
+<!-- 审批单 -->
+<view class='refer'>
+  <view class='refer_title'>
+    <text>审批单</text>
+  </view>
+  <view class='sub_con'>
+    <text class='sub_blue'>出差审批单</text>
+    <text class='sub_blue'>业务招待审批单</text>
+  </view>
+  <view class='sub_con'>
+    <text class='sub_blue'>合同审批</text>
+  </view>
+</view>
+<!-- 验收单 -->
+<view class='refer'>
+  <view class='refer_title'>
+    <text>验收单</text>
+  </view>
+  <view class='sub_con'>
+    <text class='sub_gray'>入库单</text>
+    <text class='sub_gray'>出库单</text>
+  </view>
+  <view class='sub_con'>
+    <text class='sub_gray'>固定资产验收单</text>
+    <text class='sub_gray'>低值易耗品验收单</text>
+  </view>
+</view>

@@ -1,0 +1,42 @@
+<!-- 清空按钮 -->
+<view class='travel_top'>
+  <button>清空当前页面</button>
+</view>
+<!-- 三步走 -->
+<view class='travel_centent'>
+  <view class='view-border'>
+    <text>步骤一</text>
+    <text>基本信息填写</text>
+  </view>
+  <view>
+    <text>步骤二</text>
+    <text>费用明细填写</text>
+  </view>
+  <view>
+    <text>步骤三</text>
+    <text>报销金额确认</text>
+  </view>
+</view>
+<!-- 内容 -->
+<!-- 基本信息 -->
+<view class='travel_table'>
+  <view class='table_title'>
+    <text class='title_one'>车船费</text>
+  </view>
+
+  <view class='table_centent'>
+    <text>合计总金额（小写）:</text>
+    <input maxlength="10" placeholder="请输入您的账号" placeholder-class="placeholder_input" />
+  </view>
+
+  <view class='table_centent'>
+    <text>合计总金额（大写）:</text>
+    <input maxlength="10" placeholder="请输入您的账号" placeholder-class="placeholder_input" />
+  </view>
+
+  <view class='table_bill'>
+    <text>发票:</text>
+    <view>上传发票和选项框</view>
+  </view>
+
+</view>

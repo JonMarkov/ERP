@@ -1,4 +1,4 @@
-// pages/index/index.js
+// pages/approval_bus/approval_bus.js
 Page({
 
   /**

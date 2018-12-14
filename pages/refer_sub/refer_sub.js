@@ -1,4 +1,4 @@
-// pages/index/index.js
+// pages/refer_sub/refer_sub.js
 Page({
 
   /**

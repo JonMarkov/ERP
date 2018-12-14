@@ -1,11 +1,12 @@
-// pages/index/index.js
+// pages/travel/travel.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    startDate: '2016-09-01',
+    endDate:'2016-09-01'
   },
 
   /**
@@ -14,7 +15,18 @@ Page({
   onLoad: function (options) {
 
   },
-
+  bindStartDateChange: function (e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      startDate: e.detail.value
+    })
+  },
+  bindEndDateChange: function (e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      endDate: e.detail.value
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

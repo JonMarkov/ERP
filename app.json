@@ -1,12 +1,49 @@
 {
-  "pages":[
+  "pages": [
+    "pages/approval_bus/approval_bus",
+    "pages/notice_det/Notice_det",
+    "pages/notice/Notice",
+    "pages/home/home",
+    "pages/refer_sub/refer_sub",
+    "pages/vip_center/vip_center",
+    "pages/approval_entertain/approval_entertain",
+    "pages/approval_contract/approval_contract",
+    "pages/approval_out/approval_out",
+    "pages/travel_three/travel",
+    "pages/travel_one/travel",
+    "pages/travel_two/travel",
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/login/login"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "borderStyle": "white",
+    "color": "#bdbdbd",
+    "selectedColor": "#FEA12E",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "首页",
+        "iconPath": "/image/logo.jpg",
+        "selectedIconPath": "/image/logo.jpg"
+      },
+      {
+        "pagePath": "pages/vip_center/vip_center",
+        "text": "提交申请",
+        "iconPath": "/image/logo.jpg",
+        "selectedIconPath": "/image/logo.jpg"
+      },
+      {
+        "pagePath": "pages/refer_sub/refer_sub",
+        "text": "个人中心",
+        "iconPath": "/image/logo.jpg",
+        "selectedIconPath": "/image/logo.jpg"
+      }
+    ]
   }
 }

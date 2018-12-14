@@ -1,4 +1,4 @@
-// pages/index/index.js
+// pages/travel_one/travel.js
 Page({
 
   /**

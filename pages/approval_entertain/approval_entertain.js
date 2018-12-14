@@ -1,4 +1,4 @@
-// pages/index/index.js
+// pages/approval_entertain/approval_entertain.js
 Page({
 
   /**

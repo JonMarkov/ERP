@@ -1,0 +1,78 @@
+page {
+  background: #ebebed;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20rpx;
+  flex-direction: column
+}
+
+.home_top {
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #fff;
+  background: #fff;
+  padding: 20rpx;
+  border-radius: 10rpx;
+}
+
+.home_top_left {
+  width: 10%;
+}
+
+.home_top_left image {
+  width: 30rpx;
+  height: 30rpx;
+}
+
+.home_top_center {
+  width: 80%;
+  font-size: 26rpx;
+}
+.swiper-box{
+  position: relative;
+  height: 50rpx;
+  line-height: 50rpx;
+  overflow: hidden;
+}
+.swiper-box .item{
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.home_top_right {
+  width: 10%;
+  padding-left: 20rpx;
+  border-left: 1px solid #ccc;
+}
+
+.home_top_right image {
+  width: 30rpx;
+  height: 30rpx;
+}
+
+
+.home_center{
+  background: #fff;
+  width: 90%;
+  padding: 20rpx;
+  border-radius: 10rpx;
+  margin-top: 20rpx;
+  line-height: 80rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+}
+.home_center_text{
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row
+}
+.home_center image{
+  width: 40rpx;
+  height: 40rpx;
+}

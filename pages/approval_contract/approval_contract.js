@@ -1,4 +1,4 @@
-// pages/index/index.js
+// pages/approval_contract/approval_contract.js
 Page({
 
   /**
