@@ -1,0 +1,27 @@
+<!-- 报销单 -->
+<view class='refer' bindtap='ToPendingDet'>
+  <view class='refer_title'>
+    <text>差旅报销单</text>
+  </view>
+  <view class='content'>
+    <view class='content_left'>
+      <text>申请人:张三</text>
+      <text>申请时间：2018-12-10 18:52:32</text>
+      <text>审批单编号：201812101855232</text>
+      <text>审批状态：审批中</text>
+    </view>
+    <view class='content_right'>
+      <!-- icon图表 -->
+      <view class='con con_one'>
+        <view class='bow'>杨总</view>
+        <view class='bow_icon'>已同意</view>
+      </view>
+      <view class='right_dian'>
+        <image src='../../image/pulic/dian.png'></image>
+      </view>
+      <view class='con'>
+        <view class='bow'>杨总</view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,1 +1,19 @@
-/* pages/vip_center/vip_center.wxss */
+page{
+  background: #ccc;
+  width: 100%;
+}
+.vipCen{
+  padding: 20rpx 0;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center
+}
+.vipCen view{
+  padding: 10rpx 10rpx;
+  display: flex;
+  justify-content: space-between;
+  font-size: 26rpx;
+  color: #444444
+}

@@ -1,0 +1,17 @@
+<!-- 头部标题加背景 -->
+<view class='login_top'>
+  <text class='login_top_text'>OA财务报销系统</text>
+</view>
+<!-- 登录框 -->
+<view class='login_from'>
+  <input maxlength="16" bindinput="watchNewphone" placeholder="请输入新密码" placeholder-class="placeholder_input" />
+  <input maxlength="16" bindinput="watchTwoNewPhone" placeholder="请确认新密码" placeholder-class="placeholder_input" />
+  <input maxlength="11" bindinput="watchPhone" placeholder="请输入手机号" placeholder-class="placeholder_input" />
+  <input maxlength="6" bindinput="watchCode" placeholder="请输入验证码" placeholder-class="placeholder_input" />
+   <button class="buttonget" disabled='{{disabled}}' data-id="2" bindtap="getVerificationCode">
+            {{time}}
+        </button>
+  <view class='login_from_btn'>
+    <button bindtap='subLogin'>确认修改</button>
+  </view>
+</view>

@@ -52,6 +52,7 @@ page {
 .view-border {
   border-bottom: 4rpx solid #8ebaf9;
 }
+
 /* 基本信息 */
 
 .travel_table {
@@ -92,7 +93,8 @@ page {
   font-size: 26rpx;
   border-bottom: 1px solid #f4f4f6;
 }
-.table_bill{
+
+.table_bill {
   background: #fff;
   width: 96%;
   padding: 20rpx 15rpx;
@@ -102,7 +104,8 @@ page {
   font-size: 26rpx;
   border-bottom: 1px solid #f4f4f6;
 }
-.table_cause{
+
+.table_cause {
   background: #fff;
   width: 96%;
   padding: 20rpx 15rpx;
@@ -112,9 +115,10 @@ page {
   font-size: 26rpx;
   border-bottom: 1px solid #f4f4f6;
 }
-.table_cause textarea{
+
+.table_cause textarea {
   border: 1rpx solid red;
-  width: 100%
+  width: 100%;
 }
 
 .table_adress {
@@ -136,3 +140,53 @@ page {
   text-align: right;
 }
 
+.q-image-wrap {
+  width: 30%;
+  float: left;
+  margin: 12rpx;
+}
+
+.q-image-wrap image {
+  width: 100%;
+  height: 100rpx;
+  border: 1rpx solid #ccc;
+}
+.sub {
+  height: 60rpx;
+  background: #8ebaf9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  margin-top: 20rpx;
+  position: fixed;
+  bottom: 0rpx;
+  width: 100%;
+  color: #fff;
+  font-size: 26rpx;
+  z-index: 999;
+}
+.fpXl{
+  border: 1px solid #ccc;
+width:20%;
+text-align:center;
+padding:0rpx;
+height:10rpx;
+
+}
+.bill_title{
+  display: flex;
+  flex-direction: row
+}
+.bill_title_add{
+  border: 1rpx solid #000;
+  margin-left: 20rpx;
+  border-radius: 10rpx;
+  padding: 5rpx 10rpx;
+  font-size: 20rpx
+}
+.images_sc{
+  display: flex;
+  flex-direction: column;
+  justify-content: center
+}

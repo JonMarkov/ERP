@@ -1,2 +1,17 @@
-<!--pages/vip_center/vip_center.wxml-->
-<text>pages/vip_center/vip_center.wxml</text>
+<view class='vipCen'>
+  <view class='cen_one'>
+    <text>姓名：张三</text>
+    <text>手机号：13121928345</text>
+  </view>
+  <view class='cen_two'>
+    <text>部门：财务部</text>
+    <text>职位：财务经理</text>
+  </view>
+</view>
+
+<view class='vipXx'>
+  <view>
+  </view>
+  <view>
+  </view>
+</view>

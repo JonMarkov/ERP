@@ -76,7 +76,7 @@ page {
 }
 
 .title_one {
-  color: #d8d8d8;
+  color: #949494;
 }
 
 .title_two {
@@ -93,7 +93,8 @@ page {
   font-size: 26rpx;
   border-bottom: 1px solid #f4f4f6;
 }
-.table_cause{
+
+.table_cause {
   background: #fff;
   width: 96%;
   padding: 20rpx 15rpx;
@@ -102,10 +103,15 @@ page {
   justify-content: space-between;
   font-size: 26rpx;
   border-bottom: 1px solid #f4f4f6;
+  margin-bottom: 50rpx;
 }
-.table_cause textarea{
-  border: 1rpx solid red;
-  width: 100%
+
+.table_cause textarea {
+  border: 1rpx solid #949494;
+  width: 96%;
+  margin-top: 20rpx;
+  border-radius: 10rpx;
+  padding: 10rpx;
 }
 
 .table_adress {
@@ -133,6 +139,9 @@ page {
 .adr_con {
   display: flex;
   flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin: 5rpx;
 }
 
 .adr_shanchu {
@@ -145,16 +154,43 @@ page {
 
 .adr_add {
   background: #8ebaf9;
-  border-radius: 30rpx;
+  border-radius: 10rpx;
   padding: 0rpx 80rpx;
   font-size: 20rpx;
   color: #fff;
+  margin-top: 15rpx;
 }
 
 .table_centent input {
   height: 1rem;
+  text-align: right;
 }
 
 .placeholder_input {
   text-align: right;
+}
+
+.sele {
+  display: flex;
+  flex: row;
+}
+
+.sele picker {
+  margin-left: 10rpx;
+}
+
+.sub {
+  height: 60rpx;
+  background: #8ebaf9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  margin-top: 20rpx;
+  position: fixed;
+  bottom: 0rpx;
+  width: 100%;
+  color: #fff;
+  font-size: 26rpx;
+  z-index: 999;
 }

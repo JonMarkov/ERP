@@ -24,41 +24,59 @@
   </view>
 
   <view class='table_centent'>
-    <text>人数:</text>
-    <input maxlength="10" placeholder="请输入您的账号" placeholder-class="placeholder_input" />
+    <text>姓名:</text>
+    <input maxlength="10" placeholder="请输入姓名" value="{{personNum}}" bindinput='personNum' placeholder-class="placeholder_input" />
   </view>
 
   <view class='table_centent'>
     <text>职位:</text>
-    <input maxlength="10" placeholder="请输入您的账号" placeholder-class="placeholder_input" />
+    <input maxlength="10" placeholder="请输入您的职位" value="{{positionNum}}" bindinput='positionNum' placeholder-class="placeholder_input" />
   </view>
   <view class='table_centent'>
     <text>公出起始日期</text>
-    <text>人数</text>
+    <view class='sele'>
+      <picker mode="date" value="{{date}}" start="" end="" bindchange="bindStarDateChange">
+        {{starDate}}
+      </picker>
+      <picker mode="time" value="{{time}}" start="" end="" bindchange="bindStarTimeChange">
+        {{starTime}}
+      </picker>
+    </view>
   </view>
   <view class='table_centent'>
     <text>公出截止日期</text>
-    <text>人数</text>
+    <view class='sele'>
+      <picker mode="date" value="{{date}}" start="2015-09-01" end="2017-09-01" bindchange="bindEndDateChange">
+        {{endDate}}
+      </picker>
+      <picker mode="time" value="{{time}}" start="09:01" end="21:01" bindchange="bindEndTimeChange">
+        {{endTime}}
+      </picker>
+    </view>
   </view>
 
   <view class='table_adress'>
     <text>出差地点:</text>
   </view>
   <view class='table_adr'>
-    <view class='adr_con'>
-      <text>地点</text>
+    <view class='adr_con' wx:for="{{region}}">
+      <text>地点:</text>
       <view>
-        <text>123</text>
+        <picker mode="region" data-index="{{index}}" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+          <view class="picker">
+            {{item}}
+          </view>
+        </picker>
       </view>
-      <text class='adr_shanchu'>删除</text>
+      <text class='adr_shanchu' bindtap='remvoRegion' data-index="{{index}}">删除</text>
     </view>
-    <button class='adr_add'>添加地址</button>
+    <button class='adr_add' bindtap='addRegion'>添加地址</button>
   </view>
   <view class='table_cause'>
     <text>出差事由</text>
-    <textarea
-    placeholder="placeholder颜色是红色的"
-    placeholder-style="color:red;"
-  />
+    <textarea bindinput='causeNum' value='{{causeNum}}' placeholder="不超过80字符" />
+  </view>
+  <view class='sub' bindtap='ToTapSub'>
+    <text>下一步</text>
   </view>
 </view>

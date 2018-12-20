@@ -4,7 +4,7 @@
     <text>报销单</text>
   </view>
   <view class='sub_con'>
-    <text class='sub_blue'>出差旅费报销单</text>
+    <text class='sub_blue' bindtap='ToOutBx'>出差旅费报销单</text>
     <text class='sub_gray'>工程项目审批</text>
   </view>
   <view class='sub_con'>
@@ -18,11 +18,12 @@
     <text>审批单</text>
   </view>
   <view class='sub_con'>
-    <text class='sub_blue'>出差审批单</text>
-    <text class='sub_blue'>业务招待审批单</text>
+    <text class='sub_blue' bindtap='ToOutSp'>出差审批单</text>
+    <text class='sub_blue' bindtap='ToEntertainSp'>业务招待审批单</text>
   </view>
   <view class='sub_con'>
-    <text class='sub_blue'>合同审批</text>
+    <text class='sub_blue' bindtap='ToContractSp'>合同审批</text>
+    <text class='sub_blue' bindtap='ToBusSp'>公车使用申请单</text>
   </view>
 </view>
 <!-- 验收单 -->

@@ -4,12 +4,13 @@
 </view>
 <!-- 登录框 -->
 <view class='login_from'>
-  <input maxlength="10" placeholder="请输入您的账号" placeholder-class="placeholder_input" />
-  <input maxlength="10" placeholder="请输入您的密码" placeholder-class="placeholder_input" />
+  <input maxlength="11" bindinput="watchPhone" value='{{loginPhone}}' placeholder="请输入您的账号" placeholder-class="placeholder_input" />
+  <input maxlength="16" bindinput="watchPassWord" type="password" value='{{loginPassword}}' placeholder="请输入您的密码" placeholder-class="placeholder_input" />
   <view class='login_from_text'>
+    <text bindtap='ToCode'>验证码登录</text>
     <text>忘记密码？</text>
   </view>
   <view class='login_from_btn'>
-    <button>立即登录</button>
+    <button bindtap='subLogin'>立即登录</button>
   </view>
 </view>

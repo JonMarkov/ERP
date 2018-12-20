@@ -1,0 +1,94 @@
+<view class='out'>
+  <!-- 基本信息 -->
+  <view class='out_basic'>
+    <view class='basic_title'>
+      <text>1.基本信息</text>
+    </view>
+    <view class='basic_content'>
+      <text>申请人员：</text>
+      <input maxlength="10" placeholder="请输入您的姓名" placeholder-class="placeholder_input" />
+    </view>
+    <view class='basic_content'>
+      <text>申请日期：</text>
+      <text>2018-08-08 14:09</text>
+    </view>
+    <view class='basic_content'>
+      <text>出差事由：</text>
+      <textarea placeholder="不超过80字符"></textarea>
+    </view>
+  </view>
+  <!-- 出差时间 -->
+  <view class='out_basic'>
+    <view class='basic_title'>
+      <text>2.出差时间</text>
+    </view>
+    <view class='basic_content'>
+      <text>出差前往时间</text>
+      <view class='sele'>
+        <picker mode="date" value="{{date}}" start="" end="" bindchange="bindStarDateChange">
+          {{starDate}}
+        </picker>
+        <picker mode="time" value="{{time}}" start="" end="" bindchange="bindStarTimeChange">
+          {{starTime}}
+        </picker>
+      </view>
+    </view>
+    <view class='basic_content'>
+      <text>出差返回时间</text>
+      <view class='sele'>
+        <picker mode="date" value="{{date}}" start="2015-09-01" end="2017-09-01" bindchange="bindEndDateChange">
+          {{endDate}}
+        </picker>
+        <picker mode="time" value="{{time}}" start="09:01" end="21:01" bindchange="bindEndTimeChange">
+          {{endTime}}
+        </picker>
+      </view>
+    </view>
+    <view class='basic_content'>
+      <text>出差天数</text>
+      <text>共4天</text>
+    </view>
+  </view>
+  <!-- 出差目的地 -->
+  <view class='out_basic'>
+    <view class='basic_title'>
+      <text>3.出差目的地</text>
+    </view>
+    <view class='basic_content'>
+      <text>出差目的地</text>
+        <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+    <view class="picker">
+      {{region[0]}}，{{region[1]}}，{{region[2]}}
+    </view>
+  </picker>
+    </view>
+    <view class='basic_content'>
+      <text>出差途径地</text>
+       <picker mode="region" bindchange="bindRegionChange_1" value="{{region}}" custom-item="{{customItem}}">
+    <view class="picker">
+      {{region1[0]}}，{{region1[1]}}，{{region1[2]}}
+    </view>
+  </picker>
+    </view>
+    <view class='basic_content'>
+      <text>出差里程</text>
+      <text>178公里</text>
+    </view>
+  </view>
+  <!-- 出差目的地 -->
+  <view class='out_basic'>
+    <view class='basic_title'>
+      <text>4.交通工具</text>
+    </view>
+    <view class='basic_content_btn'>
+      <text>出差乘坐工具</text>
+      <view class='btn_text'>
+      <text>火车</text> 
+      <text>航空</text> 
+      <text>船</text>
+      <text>市内交通工具</text>
+      </view>
+    </view>
+    <view>sds</view>
+  </view>
+</view>

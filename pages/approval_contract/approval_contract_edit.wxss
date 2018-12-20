@@ -1,0 +1,40 @@
+page{
+  width: 100%
+}
+.out{
+  width: 100%
+}
+.out_basic{
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center
+}
+.basic_title{
+  width: 100%;
+  background: #9dd3ed;
+  color: #fff;
+  font-size: 26rpx;
+  padding: 15rpx;
+  margin-left: 20rpx;
+}
+.basic_content{
+  width: 95%;
+  padding: 20rpx 10rpx;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1rpx solid #f4f4f6;
+  font-size: 26rpx
+}
+.placeholder_input {
+  text-align: right;
+}
+input{
+  text-align: right
+}
+.basic_content textarea{
+  border: 1rpx solid #949494;
+  border-radius: 10rpx;
+  padding: 10rpx
+}

@@ -9,6 +9,7 @@ App({
     // wx_url_1: 'https://self.antke.cn/interface/dateService.do',
     // wx_url_1: 'https://yitunnel.antke.cn/interface/dateService.do',
     wx_url_1: 'https://rqrj.antke.cn/interface/dateService.do',
+    // wx_url_1: 'https://192.168.16.106/interface/dateService.do',
     wx_url_2: '&grant_type=authorization_code',
     params: {
       channel: "4",

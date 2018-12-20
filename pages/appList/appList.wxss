@@ -1,0 +1,103 @@
+page {
+  width: 100%;
+  background: #f1f1f3;
+}
+
+.refer {
+  margin-top: 20rpx;
+  width: 92%;
+  background: #fff;
+  border-radius: 15rpx;
+  text-align: center;
+  margin: 20rpx auto;
+  padding-bottom: 5rpx;
+}
+
+.refer_title {
+  background: #8ebaf7;
+  border-top-left-radius: 10rpx;
+  border-top-right-radius: 10rpx;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  padding: 0rpx 20rpx;
+}
+
+.refer_title text {
+  color: #fff;
+  font-size: 26rpx;
+}
+
+.content {
+  padding: 10rpx;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.content_left {
+  padding: 30rpx 20rpx;
+  line-height: 50rpx;
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  text-align: left;
+  border-right: 2rpx solid #ddd;
+}
+
+.content_left text {
+  font-size: 26rpx;
+}
+
+.content_right {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+/* icon图表 */
+.con {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+}
+
+.bow {
+  width: 80rpx;
+  height: 80rpx;
+  background: #fff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  border: 1rpx solid #a3c6fc;
+  color: #90b9f9;
+  font-size: 18rpx;
+}
+
+.bow_icon {
+  background: #8ebaf7;
+  width: 70rpx;
+  height: 20rpx;
+  color: #fff;
+  padding: 5rpx 10rpx 2rpx 0px;
+  text-align: right;
+  margin-left: -40rpx;
+  z-index: 0;
+  border-top-right-radius: 15rpx;
+  border-bottom-right-radius: 15rpx;
+  font-size: 12rpx;
+}
+.right_dian{
+  margin-top: 15rpx;
+}
+.right_dian image{
+  width: 5rpx;
+  height: 67rpx
+}
+.con_one{
+  margin-left: 36rpx
+}

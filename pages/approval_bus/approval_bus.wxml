@@ -33,8 +33,26 @@
       <text>驾驶员:</text>
       <text>阿虎</text>
     </view>
-    <view>
-      sds
+   <view class='icon_sp'>
+      <!-- icon图表 -->
+      <view class='con'>
+        <view class='bow'>杨总</view>
+        <view class='bow_icon'>已同意</view>
+      </view>
+      <view class='right_dian'>
+        <image src='../../image/pulic/dian.png'></image>
+      </view>
+      <view class='con'>
+        <view class='bow'>杨总</view>
+        <view class='bow_icon'>已同意</view>
+      </view>
+      <view class='right_dian'>
+        <image src='../../image/pulic/dian.png'></image>
+      </view>
+      <view class='con'>
+        <view class='bow'>杨总</view>
+        <view class='bow_icon'>已同意</view>
+      </view>
     </view>
   </view>
 </view>

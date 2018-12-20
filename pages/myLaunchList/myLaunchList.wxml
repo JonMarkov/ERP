@@ -1,0 +1,39 @@
+<!-- 头部 -->
+<view class='launch_list'>
+  <view class='list_left'>
+    <view>时间</view>
+    <view class='left_img'>
+      <image src='../../image/logo.jpg'></image>
+      <image src='../../image/logo.jpg'></image>
+    </view>
+  </view>
+
+  <view class='list_right'>
+    <text>单据状态：全部</text>
+    <view class='right_img'>
+      <image src='../../image/logo.jpg'></image>
+    </view>
+  </view>
+</view>
+
+
+<!-- 报销单 -->
+<view class='refer' bindtap='ToPendingDet'>
+  <view class='refer_title'>
+    <text>差旅报销单</text>
+  </view>
+  <view class='content'>
+    <view class='content_left'>
+      <text>申请人:张三</text>
+      <text>申请时间：2018-12-10 18:52:32</text>
+      <text>审批单编号：201812101855232</text>
+      <text>审批状态：审批中</text>
+    </view>
+    <view class='content_right'>
+
+      <view>
+        <text>待boss审批</text>
+      </view>
+    </view>
+  </view>
+</view>

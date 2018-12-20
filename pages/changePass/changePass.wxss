@@ -1,0 +1,105 @@
+page {
+  background: #fff;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.login_top {
+  width: 100%;
+  background: #3ba5f3;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 350rpx;
+  color: #fff;
+}
+
+.login_top_text {
+  padding: 100rpx;
+  font-size: 32rpx;
+}
+
+.login_from {
+  background: #fff;
+  width: 90%;
+  height: 400rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: -100rpx;
+  border-radius: 10rpx;
+  -webkit-box-shadow: 0 0 10px #e7f4fd;
+  -moz-box-shadow: 0 0 10px #e7f4fd;
+  box-shadow: 0 0 10px #e7f4fd;
+}
+
+.login_from input {
+  border: 1px solid #e6e6e6;
+  border-radius: 10rpx;
+  font-size: 30rpx;
+  width: 80%;
+  margin-top: 30rpx;
+  padding: 5rpx 20rpx;
+  background: #fff;
+}
+
+.placeholder_input {
+  color: #a1a1a1;
+  font-size: 26rpx
+}
+
+.login_from_text {
+  width: 80%;
+  margin-top:30rpx; 
+}
+.login_from_text text{
+  font-size: 20rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  float: right;
+  color: #444444
+}
+.login_from_btn{
+  width: 100%;
+  position: fixed;
+  bottom: 0rpx
+}
+.login_from_btn button{
+  background: #55a9f2;
+  height: 1.8rem;
+  font-size: 26rpx;
+  padding: 0rpx 0rpx;
+  color: #fff
+}
+
+
+
+.buttonget
+{  
+  background: #f4f4f4;
+  margin-top: -154rpx;
+   margin-right: 50rpx;
+   width:180rpx;
+   height:55rpx;
+   color: #fff;
+   line-height: 50rpx;
+   font-size: 20rpx;
+   border:0rpx solid #ccc;
+   z-index: 999;
+   background: #a6c4f6
+}
+ 
+/*隐藏Button按钮本身的边框*/
+ 
+button[class="buttonget"]::after {
+  border: 0;
+}
+.yanzhengma{
+  display: flex;
+  flex-direction: row
+}

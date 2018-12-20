@@ -1,19 +1,28 @@
 {
   "pages": [
+    "pages/travel_one/travel",
+    "pages/travel_three/travel",
+    "pages/index/index",
+    "pages/indexCode/indexCode",
+    "pages/changePass/changePass",
+    "pages/home/home",
+    "pages/approval_out/approval_out",
+    "pages/login/login",
+    "pages/vip_center/vip_center",
     "pages/approval_bus/approval_bus",
+    "pages/approval_contract/approval_contract",
+    "pages/approval_entertain/approval_entertain",
+    "pages/appList/appList",
+    "pages/travel_two/travel",
+    "pages/myLaunchList/myLaunchList",
+    "pages/launchList/LaunchList",
+    "pages/approval_out/approval_out_edit",
+    "pages/approval_contract/approval_contract_edit",
+    "pages/approval_entertain/approval_entertain_edit",
+    "pages/approval_bus/approval_bus_edit",
     "pages/notice_det/Notice_det",
     "pages/notice/Notice",
-    "pages/home/home",
-    "pages/refer_sub/refer_sub",
-    "pages/vip_center/vip_center",
-    "pages/approval_entertain/approval_entertain",
-    "pages/approval_contract/approval_contract",
-    "pages/approval_out/approval_out",
-    "pages/travel_three/travel",
-    "pages/travel_one/travel",
-    "pages/travel_two/travel",
-    "pages/index/index",
-    "pages/login/login"
+    "pages/refer_sub/refer_sub"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -23,26 +32,26 @@
   },
   "tabBar": {
     "borderStyle": "white",
-    "color": "#bdbdbd",
-    "selectedColor": "#FEA12E",
+    "color": "#949494",
+    "selectedColor": "#3b9ff5",
     "list": [
       {
         "pagePath": "pages/home/home",
         "text": "首页",
-        "iconPath": "/image/logo.jpg",
-        "selectedIconPath": "/image/logo.jpg"
-      },
-      {
-        "pagePath": "pages/vip_center/vip_center",
-        "text": "提交申请",
-        "iconPath": "/image/logo.jpg",
-        "selectedIconPath": "/image/logo.jpg"
+        "iconPath": "/image/pulic/Homepage-on.png",
+        "selectedIconPath": "/image/pulic/Homepage-down.png"
       },
       {
         "pagePath": "pages/refer_sub/refer_sub",
+        "text": "提交申请",
+        "iconPath": "/image/pulic/submit-on.png",
+        "selectedIconPath": "/image/pulic/submit-down.png"
+      },
+      {
+        "pagePath": "pages/vip_center/vip_center",
         "text": "个人中心",
-        "iconPath": "/image/logo.jpg",
-        "selectedIconPath": "/image/logo.jpg"
+        "iconPath": "/image/pulic/personal-on.png",
+        "selectedIconPath": "/image/pulic/personal-down.png"
       }
     ]
   }

@@ -53,6 +53,8 @@ page {
 }
 
 .login_from_text {
+  display: flex;
+  justify-content: space-between;
   width: 80%;
   margin-top:30rpx; 
 }

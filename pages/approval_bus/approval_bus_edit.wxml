@@ -1,0 +1,40 @@
+<view class='out'>
+  <!-- 基本信息 -->
+  <view class='out_basic'>
+    <view class='basic_content'>
+      <text>申请人员：</text>
+      <input maxlength="10" placeholder="请输入您的姓名" placeholder-class="placeholder_input" />
+    </view>
+    <view class='basic_content'>
+      <text>申请日期：</text>
+      <text>2018-08-08 14:09</text>
+    </view>
+    <view class='basic_content'>
+      <text>车辆型号：</text>
+      <input maxlength="10" placeholder="请输入车辆型号" placeholder-class="placeholder_input" />
+    </view>
+    <view class='basic_content'>
+      <text>车牌号：</text>
+      <input maxlength="10" placeholder="请输入车牌号" placeholder-class="placeholder_input" />
+    </view>
+    <view class='basic_content'>
+      <text>出差事由：</text>
+      <textarea placeholder="不超过80字符"></textarea>
+    </view>
+    <view class='basic_content'>
+      <text>目的地：</text>
+      <input maxlength="10" placeholder="请输入目的地" placeholder-class="placeholder_input" />
+    </view>
+    <view class='basic_content'>
+      <text>同车人员:</text>
+      <textarea placeholder="请用英文逗号隔开"></textarea>
+    </view>
+    <view class='basic_content'>
+      <text>驾驶员:</text>
+      <input maxlength="10" placeholder="请输入驾驶员姓名" placeholder-class="placeholder_input" />
+    </view>
+    <view>
+      <button>提交</button>
+    </view>
+  </view>
+</view>

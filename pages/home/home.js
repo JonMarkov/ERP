@@ -1,4 +1,5 @@
 // pages/home/home.js
+let Charts = require('../../utils/wxcharts.js')
 Page({
 
   /**
@@ -18,7 +19,24 @@ Page({
   onLoad: function(options) {
 
   },
-
+  // 待我审批-跳转
+  ToPending: function() {
+    wx.navigateTo({
+      url: '/pages/appList/appList',
+    })
+  },
+  // 我发起的-跳转
+  ToLaunch: function() {
+    wx.navigateTo({
+      url: '/pages/launchList/LaunchList',
+    })
+  },
+  // 我审批的
+  ToApproval: function() {
+    wx.navigateTo({
+      url: '/pages/myLaunchList/myLaunchList',
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

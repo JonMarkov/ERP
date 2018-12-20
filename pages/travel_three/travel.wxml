@@ -4,7 +4,7 @@
 </view>
 <!-- 三步走 -->
 <view class='travel_centent'>
-  <view class='view-border'>
+  <view>
     <text>步骤一</text>
     <text>基本信息填写</text>
   </view>
@@ -12,7 +12,7 @@
     <text>步骤二</text>
     <text>费用明细填写</text>
   </view>
-  <view>
+  <view class='view-border'>
     <text>步骤三</text>
     <text>报销金额确认</text>
   </view>
@@ -26,17 +26,44 @@
 
   <view class='table_centent'>
     <text>合计总金额（小写）:</text>
-    <input maxlength="10" placeholder="请输入您的账号" placeholder-class="placeholder_input" />
+    <!-- <input maxlength="10" placeholder="请输入您的账号" placeholder-class="placeholder_input" /> -->
+    <text>{{lowerCaseTotal}}</text>
+
   </view>
 
   <view class='table_centent'>
     <text>合计总金额（大写）:</text>
-    <input maxlength="10" placeholder="请输入您的账号" placeholder-class="placeholder_input" />
+    <text>{{capitalTotal}}</text>
+    <!-- <input maxlength="10" placeholder="请输入您的账号" placeholder-class="placeholder_input" /> -->
   </view>
 
   <view class='table_bill'>
-    <text>发票:</text>
-    <view>上传发票和选项框</view>
+    <view class='bill_title'>
+      <text>发票:</text>
+      <text class='bill_title_add' bindtap='ToAddList'>添加</text>
+    </view>
+    <view class="images_sc" wx:for="{{invoice}}" wx:for-item="i">
+      <!-- 选择发票类型 -->
+      <picker bindchange="bindPickerChange" data-index="{{index}}" value="{{index}}" range="{{array}}" style='margin-top:20rpx'>
+        <view class="picker">
+          <input class='fpXl' value='{{array[i.index]}}'></input>
+        </view>
+      </picker>
+      <!-- 图片展示 -->
+      <view class="question-images">
+        <block wx:for="{{i.images}}">
+          <view class="q-image-wrap">
+            <!-- 图片缩略图  -->
+            <image class="q-image" src="{{item}}" mode="aspectFill" data-idx="{{index}}" bindtap="handleImagePreview"></image>
+            <!-- 移除图片的按钮  -->
+            <view class="q-image-remover" data-index="{{i.id}}" data-idx="{{index}}" bindtap="removeImage">删除</view>
+          </view>
+        </block>
+      </view>
+      <button type="default" size="mini" data-index="{{index}}" bindtap="bindChooiceProduct">添加图片</button>
+    </view>
   </view>
-
+  <view class='sub' bindtap='ToTapSub'>
+    <text>提交</text>
+  </view>
 </view>

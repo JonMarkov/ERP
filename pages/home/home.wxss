@@ -61,18 +61,58 @@ page {
   padding: 20rpx;
   border-radius: 10rpx;
   margin-top: 20rpx;
-  line-height: 80rpx;
+  line-height: 40rpx;
   display: flex;
   flex-direction: column;
   justify-content: center;
 
 }
+.home_text{
+  display: flex;
+  flex-direction: row;
+
+}
+.wenzi{
+  margin-left: -25rpx
+}
+.text_num{
+  font-size: 20rpx;
+  margin-left: 85rpx;
+  margin-top: -75rpx
+}
+.icon_99{
+ width: 118rpx;
+ height: 76rpx;
+}
 .home_center_text{
   display: flex;
-  justify-content: space-around;
-  flex-direction: row
+  justify-content: space-evenly;
+  flex-direction: row;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx
 }
-.home_center image{
-  width: 40rpx;
-  height: 40rpx;
+.img_icon{
+  width: 118rpx;
+  height: 76rpx;
+}
+.text_icon{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 26rpx
+}
+.home_bottom{
+  background: #fff;
+  border-radius: 10rpx;
+  width: 95%;
+  margin-top: 20rpx
+
+
+}
+canvas {
+    width: 640px;
+    height: 400px;
+    margin-left: -220rpx;
+    transform: scale(0.6)
 }

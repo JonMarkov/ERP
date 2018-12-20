@@ -1,0 +1,18 @@
+<!-- 头部标题加背景 -->
+<view class='login_top'>
+  <text class='login_top_text'>OA财务报销系统</text>
+</view>
+<!-- 登录框 -->
+<view class='login_from'>
+  <input maxlength="11" bindinput="watchPhone" placeholder="请输入您的账号" placeholder-class="placeholder_input" />
+  <input maxlength="16" bindinput="watchPassWord" placeholder="请输入验证码" placeholder-class="placeholder_input" />
+   <button class="buttonget" disabled='{{disabled}}' data-id="2" bindtap="getVerificationCode">
+            {{time}}
+        </button>
+  <view class='login_from_text'>
+    <text bindtap='ToLogin'>账号密码登录</text>
+  </view>
+  <view class='login_from_btn'>
+    <button bindtap='subLogin'>立即登录</button>
+  </view>
+</view>

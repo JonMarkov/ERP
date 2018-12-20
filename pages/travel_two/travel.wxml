@@ -4,11 +4,11 @@
 </view>
 <!-- 三步走 -->
 <view class='travel_centent'>
-  <view class='view-border'>
+  <view>
     <text>步骤一</text>
     <text>基本信息填写</text>
   </view>
-  <view>
+  <view class='view-border'>
     <text>步骤二</text>
     <text>费用明细填写</text>
   </view>
@@ -20,48 +20,118 @@
 <!-- 点击增加输入内容 -->
 <view class='travel_bottom'>
   <text>费用明细</text>
-  <button>添加费用明细</button>
+  <button bindtap='addDet'>添加费用明细</button>
 </view>
 <!-- 输入内容详情 -->
 <view class='travel_table'>
-  <view class='table_title'>
-    <text class='title_one'>车船费</text>
-    <text class='title_two'>删除</text>
-  </view>
+  <!-- 全部明细输入列表 -->
+  <view class='tarvel_one' wx:for="{{item_list}}" data-num="{{index}}">
+    <!-- 蓝色部分标题 其中存在if语句，判断7种状态中的一个-->
+    <view class='table_title'>
+      <text class='title_one' wx:if="{{item.type == '1'}}">{{index + 1}} 车船费</text>
+      <text class='title_one' wx:if="{{item.type == '2'}}">{{index + 1}} 住宿费</text>
+      <text class='title_one' wx:if="{{item.type == '3'}}">{{index + 1}} 会议费</text>
+      <text class='title_one' wx:if="{{item.type == '4'}}">{{index + 1}} 培训费</text>
+      <text class='title_one' wx:if="{{item.type == '5'}}">{{index + 1}} 其他费用</text>
+      <text class='title_one' wx:if="{{item.type == '6'}}">{{index + 1}} 出差补助</text>
+      <text class='title_one' wx:if="{{item.type == '7'}}">{{index + 1}} 伙食补助</text>
+      <text class='title_two'>删除</text>
+    </view>
+    <!-- 文本第一行输入 其中存在if语句，判断7种状态中的一个-->
+    <view class='table_centent'>
+      <text wx:if="{{item.type == '1'||item.type == '2'||item.type == '3'||item.type == '4'||item.type == '5'}}">人数</text>
+      <text wx:if="{{item.type == '6'||item.type == '7'}}">时间:</text>
+      <view class='table_time' wx:if="{{item.type == '6'||item.type == '7'}}">
+        <picker mode="date" value="{{date}}" start="" end="" data-index="{{index}}" bindchange="bindStarDateChange">
+          {{item.start_time}}
+        </picker>
+        <picker mode="time" value="{{time}}" start="" end="" data-index="{{index}}" bindchange="bindStarTimeChange">
+          {{item.starTime}}
+        </picker>
+        <text>~</text>
+        <picker mode="date" value="{{date}}" start="" end="" data-index="{{index}}" bindchange="bindEndDateChange">
+          {{item.end_time}}
+        </picker>
+        <picker mode="time" value="{{time}}" start="" end="" data-index="{{index}}" bindchange="bindEndTimeChange">
+          {{item.endTime}}
+        </picker>
+      </view>
+      <input maxlength="10" placeholder="请输入人数" bindinput='ToOneNum' data-index="{{index}}" value='{{item.travel_place}}' placeholder-class="placeholder_input" wx:if="{{item.type == '1'||item.type == '2'||item.type == '3'||item.type == '4'||item.type == '5'}}"
+      />
+    </view>
+    <!-- 文本第二行输入 其中存在if语句，判断7种状态中的一个-->
+    <view class='table_centent'>
+      <text wx:if="{{item.type == '1'||item.type == '2'||item.type == '3'||item.type == '4'||item.type == '5'}}">时间</text>
+      <text wx:if="{{item.type == '6'||item.type == '7'}}">天数</text>
+      <view class='table_time' wx:if="{{item.type == '1'||item.type == '2'||item.type == '3'||item.type == '4'||item.type == '5'}}">
+        <picker mode="date" value="{{date}}" start="" end="" data-index="{{index}}" bindchange="bindStarDateChange">
+          {{item.start_time}}
+        </picker>
+        <picker mode="time" value="{{time}}" start="" end="" data-index="{{index}}" bindchange="bindStarTimeChange">
+          {{item.starTime}}
+        </picker>
+        <text>~</text>
+        <picker mode="date" value="{{date}}" start="" end="" data-index="{{index}}" bindchange="bindEndDateChange">
+          {{item.end_time}}
+        </picker>
+        <picker mode="time" value="{{time}}" start="" end="" data-index="{{index}}" bindchange="bindEndTimeChange">
+          {{item.endTime}}
+        </picker>
+      </view>
+      <input maxlength="10" placeholder="请输入天数" bindinput='ToDays' data-index="{{index}}" value='{{item.days}}' placeholder-class="placeholder_input" wx:if="{{item.type == '6'||item.type == '7'}}" />
 
-  <view class='table_centent'>
-    <text>人数:</text>
-    <input maxlength="10" placeholder="请输入您的账号" placeholder-class="placeholder_input" />
-  </view>
-  <view class='table_centent'>
-    <text>时间:</text>
-    <view class="section">
-      <picker mode="date" value="{{date}}" start="2015-09-01" end="2017-09-01" bindchange="bindStartDateChange">
-        <view class="picker">
-          {{startDate}}
-        </view>
-      </picker>
     </view>
-    <text>-</text>
-    <view class="section">
-      <picker mode="date" value="{{date}}" start="2015-09-01" end="2017-09-01" bindchange="bindEndDateChange">
-        <view class="picker">
-          {{endDate}}
-        </view>
-      </picker>
+    <!-- 文本第三行输入 其中存在if语句，判断7种状态中的一个-->
+    <view class='table_centent'>
+      <text wx:if="{{item.type == '1'}}">交通工具</text>
+      <text wx:if="{{item.type == '2'||item.type == '3'||item.type == '4'||item.type == '5'}}">金额</text>
+      <text wx:if="{{item.type == '6'||item.type == '7'}}">标准</text>
+      <view wx:if="{{item.type == '1'}}">
+        <picker bindchange="bindPickerChange" data-index = "{{index}}" value="{{index}}" range="{{array}}">
+          <view class="picker">
+            {{item.vehicle}}
+          </view>
+        </picker>
+      </view>
+      <input maxlength="10" placeholder="请输入金额" value='{{item.amount}}' placeholder-class="placeholder_input" wx:if="{{item.type == '2'||item.type == '3'||item.type == '4'||item.type == '5'}}" />
+      <text wx:if="{{item.type == '6'}}">{{foodAllowance}}</text>
+      <text wx:if="{{item.type == '7'}}">{{travelAllowance}}</text>
     </view>
-  </view>
-  <view class='table_centent'>
-    <text>交通工具</text>
-    <text>人数</text>
-  </view>
-  <view class='table_centent'>
-    <text>金额</text>
-    <text>人数</text>
+    <!-- 第四行输入 其中存在if语句，判断7种状态中的一个-->
+    <view class='table_centent' wx:if="{{item.type=='1'||item.type=='6'||item.type=='7'}}">
+      <text wx:if="{{item.type=='1'||item.type=='6'||item.type=='7'}}">金额</text>
+      <text wx:if="{{item.type=='5'}}">输入框</text>
+      <input maxlength="10" placeholder="请输入金额" value='{{item.amount}}' placeholder-class="placeholder_input" bindinput='ToPlace' data-index="{{index}}" wx:if="{{item.type=='1'||item.type=='6'||item.type=='7'}}" />
+      <text wx:if="{{item.type=='5'}}">文本框</text>
+    </view>
   </view>
 </view>
 <!-- 按钮 -->
+<view class='zhanwei'></view>
 <view class='travel_btn'>
   <button class='btn_up'>返回上一步</button>
-  <button class='btn_dow'>下一步</button>
+  <button class='btn_dow' bindtap='ToBtnDown'>下一步</button>
+</view>
+
+<!-- 遮罩层 -->
+<view class="mask" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+<!-- 弹出层 -->
+<view class="modalDlg" wx:if="{{showModal}}">
+  <!-- 内容 -->
+  <view class='mask_one'>
+    <text class="{{selOne?'mask_text_sel':'mask_text'}}" bindtap='selOne'>车船费</text>
+    <text class="{{selTwo?'mask_text_sel':'mask_text'}}" bindtap='selTwo'>住宿费</text>
+  </view>
+  <view class='mask_one'>
+    <text class="{{selThree?'mask_text_sel':'mask_text'}}" bindtap='selThree'>培训费</text>
+    <text class="{{selFour?'mask_text_sel':'mask_text'}}" bindtap='selFour'>其他费用</text>
+  </view>
+  <view class='mask_one'>
+    <text class="{{selFive?'mask_text_sel':'mask_text'}}" bindtap='selFive'>会议费</text>
+    <text class="{{selSix?'mask_text_sel':'mask_text'}}" bindtap='selSix'>出差补助</text>
+  </view>
+  <view class='mask_one' style='dispaly:flex;justify-content: flex-start;margin-left:96rpx'>
+    <text class="{{selSeven?'mask_text_sel':'mask_text'}}" bindtap='selSeven'>伙食补助</text>
+  </view>
+  <view bindtap="addOk" class="ok">添加</view>
 </view>

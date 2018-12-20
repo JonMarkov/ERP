@@ -1,67 +1,94 @@
 <view class='out'>
-<!-- 基本信息 -->
-<view class='out_basic'>
-  <view class='basic_title'>
-    <text>1.基本信息</text>
+  <!-- 基本信息 -->
+  <view class='out_basic'>
+    <view class='basic_title'>
+      <text>1.基本信息</text>
+    </view>
+    <view class='basic_content'>
+      <text>申请人员：</text>
+      <text>macong</text>
+    </view>
+    <view class='basic_content'>
+      <text>申请日期：</text>
+      <text>2018-08-08 14:09</text>
+    </view>
+    <view class='basic_content'>
+      <text>出差事由：</text>
+      <text>会见客户等</text>
+    </view>
   </view>
-  <view class='basic_content'>
-    <text>申请人员：</text>
-    <text>macong</text>
+  <!-- 出差时间 -->
+  <view class='out_basic'>
+    <view class='basic_title'>
+      <text>2.出差时间</text>
+    </view>
+    <view class='basic_content'>
+      <text>出差前往时间</text>
+      <text>2018-08-08 14:09</text>
+    </view>
+    <view class='basic_content'>
+      <text>出差返回时间</text>
+      <text>2018-08-08 14:09</text>
+    </view>
+    <view class='basic_content'>
+      <text>出差天数</text>
+      <text>共4天</text>
+    </view>
   </view>
-  <view class='basic_content'>
-    <text>申请日期：</text>
-    <text>2018-08-08 14:09</text>
+  <!-- 出差目的地 -->
+  <view class='out_basic'>
+    <view class='basic_title'>
+      <text>3.出差目的地</text>
+    </view>
+    <view class='basic_content'>
+      <text>出差目的地</text>
+      <text>2018-08-08 14:09</text>
+    </view>
+    <view class='basic_content'>
+      <text>出差途径地</text>
+      <text>2018-08-08 14:09</text>
+    </view>
+    <view class='basic_content'>
+      <text>出差里程</text>
+      <text>178公里</text>
+    </view>
   </view>
-  <view class='basic_content'>
-    <text>出差事由：</text>
-    <text>会见客户等</text>
+  <!-- 出差目的地 -->
+  <view class='out_basic'>
+    <view class='basic_title'>
+      <text>4.交通工具</text>
+    </view>
+    <view class='basic_content'>
+      <text>出差乘坐工具</text>
+      <text>火车</text>
+    </view>
+    <view class='icon_sp'>
+      <!-- icon图表 -->
+      <view class='con'>
+        <view class='bow'>杨总</view>
+        <view class='bow_icon'>已同意</view>
+      </view>
+
+      <view class='con'>
+          <image src='../../image/pulic/dian.png'></image>
+        <view class='bow'>杨总</view>
+        <view class='bow_icon'>已同意</view>
+      </view>
+
+      <view class='con'>
+        <image class="right_dian" src='../../image/pulic/dian.png'></image>
+        <view class='bow'>杨总</view>
+        <view class='bow_icon'>已同意</view>
+      </view>
+    </view>
   </view>
-</view>
-<!-- 出差时间 -->
-<view class='out_basic'>
-  <view class='basic_title'>
-    <text>2.出差时间</text>
+
+
+
+  <view class="container" class="zn-uploadimg">
+    <button type="primary" bindtap="modalinput">modal有输入框</button>
   </view>
-  <view class='basic_content'>
-    <text>出差前往时间</text>
-    <text>2018-08-08 14:09</text>
-  </view>
-  <view class='basic_content'>
-    <text>出差返回时间</text>
-    <text>2018-08-08 14:09</text>
-  </view>
-  <view class='basic_content'>
-    <text>出差天数</text>
-    <text>共4天</text>
-  </view>
-</view>
-<!-- 出差目的地 -->
-<view class='out_basic'>
-  <view class='basic_title'>
-    <text>3.出差目的地</text>
-  </view>
-  <view class='basic_content'>
-    <text>出差目的地</text>
-    <text>2018-08-08 14:09</text>
-  </view>
-  <view class='basic_content'>
-    <text>出差途径地</text>
-    <text>2018-08-08 14:09</text>
-  </view>
-  <view class='basic_content'>
-    <text>出差里程</text>
-    <text>178公里</text>
-  </view>
-</view>
-<!-- 出差目的地 -->
-<view class='out_basic'>
-  <view class='basic_title'>
-    <text>4.交通工具</text>
-  </view>
-  <view class='basic_content'>
-    <text>出差乘坐工具</text>
-    <text>火车</text>
-  </view>
-  <view>sds</view>
-</view>
+  <modal id="modal" hidden="{{hiddenmodalput}}" title="预约信息" confirm-text="提交" cancel-text="取消" bindcancel="cancel" bindconfirm="confirm">
+    <textarea class='testTk'></textarea>
+  </modal>
 </view>

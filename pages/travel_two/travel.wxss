@@ -6,7 +6,9 @@ page {
   align-items: center;
   width: 100%;
 }
-
+.placeholder_input{
+  text-align: right
+}
 /* 情况按钮 */
 
 .travel_top {
@@ -117,27 +119,176 @@ page {
 .table_centent input {
   height: 1rem;
   min-height: 1rem;
+  text-align: right
 }
 
 .placeholder_input {
   text-align: right;
 }
-.travel_btn{
-  position: absolute;
+
+.travel_btn {
+  position: fixed;
   bottom: 0rpx;
   display: flex;
   flex: row;
-  width: 100%
+  width: 100%;
 }
-.travel_btn button{
+
+.travel_btn button {
   width: 50%;
   border: 0rpx solid #8ebaf7;
   border-radius: 0rpx;
-  color: #fff
+  color: #fff;
 }
-.btn_up{
-  background: #d1d2d4
+
+.btn_up {
+  background: #d1d2d4;
 }
-.btn_dow{
+
+.btn_dow {
+  background: #8ebaf7;
+}
+
+.tanchu {
+  height: 360rpx;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  margin-top: 20rpx;
+  position: fixed;
+  bottom: 0rpx;
+  width: 100%;
+  color: #fff;
+  font-size: 26rpx;
+  z-index: 999;
+}
+
+.tc_title {
+  border-radius: 10rpx;
+  padding: 10rpx;
+  background: #000;
+  height: 30rpx;
+  width: 98%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.tc_btn {
+  display: flex;
+  justify-content: space-around;
+}
+
+.tc_btn text {
+  border: 1rpx solid #8ebaf7;
+  color: #8ebaf7;
+}
+
+.zhanwei {
+  height: 100rpx;
+}
+.tarvel_one{
+margin-top:20rpx;
+width:100%;
+padding:10rpx 20rpx;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+}
+.table_time{
+  display: flex;
+  flex-direction: row
+}
+.table_time picker{
+  margin-right: 10rpx
+}
+.table_time text{
+  margin-right: 10rpx
+}
+/* 遮罩层 */
+
+.mask {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  z-index: 9000;
+  opacity: 0.5;
+}
+
+/* 弹出层 */
+
+.modalDlg {
+  width: 92%;
+  position: fixed;
+  top: 50px;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  margin: 0 auto;
+  background-color: #fff;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 24rpx;
+}
+
+/* 弹出层里面的图片 */
+
+.modalDlg image {
+  width: 120px;
+  height: 120px;
+  margin-top: 30px;
+}
+
+/* 弹出层里面的按钮 */
+
+.ok {
+  width: 80px;
+  height: 35px;
+  background: #8ebaf7;
+  line-height: 35px;
+  text-align: center;
+  color: #fff;
+  font-size: 15px;
+  margin: 20px auto;
+  border-radius: 10px;
+}
+
+/* 弹出层里面的文字 */
+
+.text {
+  text-align: justify;
+  font-size: 14px;
+  color: #666;
+  width: 180px;
+  margin-top: 10px;
+  
+}
+
+.mask_one {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 90%;
+  padding: 20rpx;
+}
+
+.mask_text {
+  border: 1rpx solid #8ebaf7;
+  padding: 10rpx 60rpx;
+  color: #8ebaf7;
+  border-radius: 10rpx;
+  font-size: 26rpx;
+}
+.mask_text_sel{
+  border: 1rpx solid #8ebaf7;
+  padding: 10rpx 60rpx;
+  color: #fff;
+  border-radius: 10rpx;
+  font-size: 26rpx;
   background: #8ebaf7
 }
