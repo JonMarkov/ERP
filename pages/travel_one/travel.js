@@ -6,31 +6,41 @@ Page({
    */
   data: {
     // 事由
-    causeNum: '1',
+    causeNum: '',
     // 姓名
-    personNum: '1',
+    personNum: '',
     // 职位
-    positionNum: '1',
+    positionNum: '',
     // 出差地点
     region: [
-      '广东省广州市海珠区',
-      '河北省衡水市武强县',
+
     ],
     // 地点需要索引
     index: 0,
     // 开始日期
-    starDate: '2016-09-01',
-    starTime: '12:01',
+    starDate: '请选择开始日期',
+    starTime: '时间',
     // 截至日期
-    endDate: '2016-09-01',
-    endTime: '12:01',
+    endDate: '请选择结束日期',
+    endTime: '时间',
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-
+    // 获取缓存内数据 user部分
+    var that = this
+    wx.getStorage({
+      key: "user",
+      success: function(res) {
+        that.setData({
+          user: res.data,
+          personNum: res.data.user_name,
+          positionNum: res.data.role
+        })
+      }
+    })
   },
   // 选择开始日期
   bindStarDateChange: function(e) {
@@ -98,53 +108,55 @@ Page({
       region: regionList
     })
   },
-  // 监听输入姓名
-  personNum: function(event) {
-    this.setData({
-      personNum: event.detail.value
-    })
-  },
-  // 监听输入职位
-  positionNum: function(event) {
-    this.setData({
-      positionNum: event.detail.value
-    })
-  },
   // 监听出差事由
   causeNum: function(event) {
     this.setData({
       causeNum: event.detail.value
     })
   },
-  // 进入页面遍历姓名和职位-函数定义
+  // 进入页面遍历-函数定义
   nameAndRole: function() {
     var that = this;
     wx.request({
       url: phoneUrl,
       method: "POST",
       data: {
-        service: "selectNameAndRole",
+        service: "selectTravelCostOne",
         user_id: this.data.user.user_id,
       },
       header: {
         "content-type": "application/json"
       },
       success: function(res) {
-        console.log(res.data)
-        // 缓存餐补
-        wx.setStorage({
-          key: "foodAllowance",
-          data: res.data.foodAllowance
-        })
-        // 缓存出差补助
-        wx.setStorage({
-          key: "travelAllowance",
-          data: res.data.travelAllowance
-        })
-        that.setData({
-          personNum: res.data.userName,
-          positionNum: res.data.role
-        })
+        console.log(res)
+        if (res.data.result_desc != "暂无数据") {
+          // 获取出差地点
+          var travelPlaceAre = res.data.approval.travelPlace
+          var ardress = travelPlaceAre.split(",")
+          ardress.pop()
+          // 获取出差截至日期
+          var returnTimeStr = res.data.approval.returnTimeStr
+          var timeStr = returnTimeStr.split(" ")
+          // 获取出差开始日期
+          var setOffTimeStr = res.data.approval.setOffTimeStr
+          var timeEnd = setOffTimeStr.split(" ")
+          // 获取时间事由
+          var travelReason = res.data.approval.travelReason
+          that.setData({
+            flow_no: res.data.approval.flowNo,
+            flow_id: res.data.approval.flowId,
+            // 出差地点
+            region: ardress,
+            // 截至日期
+            endDate: timeStr[0],
+            endTime: timeStr[1],
+            // 开始日期
+            starDate: timeEnd[0],
+            starTime: timeEnd[1],
+            // 出差事由
+            causeNum: travelReason
+          })
+        }
 
       }
     })
@@ -154,16 +166,57 @@ Page({
     // 姓名
     var traName = this.data.personNum;
     // 职位
-    var traPosition = this.data.positionNum
+    var traPosition = this.data.positionNum;
     // 开始时间
-    var tarStarDate = this.data.starDate + " " + this.data.starTime
+    var tarStarDate = this.data.starDate + " " + this.data.starTime;
+    // 判断开始日期和时间是否输入
+    if (tarStarDate == '请选择开始日期 时间') {
+      wx.showModal({
+        title: '提示',
+        content: '请填写第开始日前和时间',
+      })
+      return
+    }
     // 结束时间
     var tarEndDate = this.data.endDate + " " + this.data.endTime
+    // 判断结束日期和时间是否输入
+    if (tarEndDate == '请选择结束日期 时间') {
+      wx.showModal({
+        title: '提示',
+        content: '请填写第结束日前和时间',
+      })
+      return
+    }
     // 出差地点
     var tarRegion = this.data.region;
+    // 判断出差地点是否为空
+    if (tarRegion == []) {
+      wx.showModal({
+        title: '提示',
+        content: '请添加出差地点',
+      })
+      return
+
+    }
+    // 判断出差地点是否为完善
+    for (var i in tarRegion) {
+      if (tarRegion[i] == '请选择出差地点') {
+        wx.showModal({
+          title: '提示',
+          content: '请完善出差地点',
+        })
+        return
+      }
+    }
     // 出差事由
     var tarCauseNum = this.data.causeNum
-    var flow_id = ''
+    if (tarCauseNum == '') {
+      wx.showModal({
+        title: '提示',
+        content: '请输入出差事由',
+      })
+      return
+    }
     console.log(tarRegion)
     var that = this;
     wx.request({
@@ -176,14 +229,19 @@ Page({
         end_date: tarEndDate,
         travel_place_list: tarRegion,
         travel_reason: tarCauseNum,
-        flow_id: flow_id
-
+        flow_id: this.data.flow_id || '',
+        flow_no: this.data.flow_no||''
       },
       header: {
         "content-type": "application/json"
       },
       success: function(res) {
-        console.log(res.data)
+        console.log(res)
+        // 把订单id放进本地缓存
+        wx.setStorage({
+          key: "flow_no",
+          data: res.data.flow_no
+        })
         if (res.data.result_desc == "提交成功") {
           wx.navigateTo({
             url: "/pages/travel_two/travel?flow_id=" + res.data.flow_id + "&" + "flow_no=" + res.data.flow_no,
@@ -191,6 +249,39 @@ Page({
         }
       }
     })
+  },
+  // 清空当前页面删除
+  Todelete: function() {
+    var that = this
+    wx.request({
+      url: phoneUrl,
+      method: "POST",
+      data: {
+        service: "deleteTravelCostApproval",
+        flow_id: this.data.flow_id
+      },
+      header: {
+        "content-type": "application/json"
+      },
+      success: function(res) {
+        console.log(res.data)
+        that.setData({
+          // 事由
+          causeNum: '',
+          // 出差地点
+          region: [],
+          // 地点需要索引
+          index: 0,
+          // 开始日期
+          starDate: '请选择开始日期',
+          starTime: '时间',
+          // 截至日期
+          endDate: '请选择结束日期',
+          endTime: '时间',
+        })
+      }
+    })
+
 
   },
   /**
@@ -212,7 +303,7 @@ Page({
         that.setData({
           user: res.data
         })
-        // 进入页面遍历姓名和职位 - 函数执行
+        // 进入页面获取数据 - 函数执行
         that.nameAndRole()
       }
     })

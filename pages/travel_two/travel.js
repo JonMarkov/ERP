@@ -29,22 +29,24 @@ Page({
     showModal: false,
     array: ['汽车', '火箭', '千里马', 'F1'],
     index: 0,
-    item_list: [{
-      // 补助类型：1-7
-      'type': '1',
-      // 交通工具
-      'vehicle': '汽车',
-      // 人数
-      'travel_place': '',
-      // 开始时间
-      'start_time': '请选择开始日期',
-      'starTime': '时间',
-      // 结束时间
-      'end_time': '请选择结束日期',
-      'endTime': '时间',
-      // 金额
-      'amount': '',
-    }]
+    item_list: [
+    //   {
+    //   // 补助类型：1-7
+    //   'type': '1',
+    //   // 交通工具
+    //   'vehicle': '汽车',
+    //   // 人数
+    //   'travel_place': '',
+    //   // 开始时间
+    //   'start_time': '请选择开始日期',
+    //   'starTime': '时间',
+    //   // 结束时间
+    //   'end_time': '请选择结束日期',
+    //   'endTime': '时间',
+    //   // 金额
+    //   'amount': '',
+    // }
+    ]
   },
 
   /**
@@ -52,8 +54,41 @@ Page({
    */
   onLoad: function(options) {
     this.setData({
-      flow_id: options.flow_id,
       flow_no: options.flow_no
+    })
+  },
+  // 清空当前页面
+  TodetItem: function() {
+    var that = this
+    console.log(this.data.flow_no)
+    wx.request({
+      url: phoneUrl,
+      method: "POST",
+      data: {
+        service: "deleteTravelCostItems",
+        flow_no: this.data.flow_no,
+      },
+      header: {
+        "content-type": "application/json"
+      },
+      success: function(res) {
+        console.log(res.data)
+        that.setData({
+          item_list: []
+        })
+      }
+    })
+  },
+  // 删除
+  ToRomvo: function(e) {
+    var index = e.currentTarget.dataset.index
+    console.log(e.currentTarget.dataset.index)
+    var dataItem = this.data.item_list
+    console.log(this.data.item_list)
+    dataItem.splice(index, 1)
+    console.log(dataItem)
+    this.setData({
+      item_list: dataItem
     })
   },
   // 提交数据执行函数定义 + 跳转第三步骤
@@ -105,7 +140,7 @@ Page({
         return
       }
       // 判断费用说明是否选择
-      if (mxList[i].mark == '') {
+      if (mxList[i].mark == ''&& mxList[i].type == '5') {
         wx.showModal({
           title: '提示',
           content: '请填写第' + index + '个费用说明选择框',
@@ -118,8 +153,9 @@ Page({
       if (mxList[i].type == '7') {
         var standard = this.data.travelAllowance
       }
-
+      console.log(mxList[i])
       var temp = {
+        "type": mxList[i].type || '',
         'days': mxList[i].days || '',
         'vehicle': mxList[i].vehicle || '',
         'travel_place': mxList[i].travel_place || '',
@@ -148,7 +184,7 @@ Page({
         if (res.data.result_desc == "提交成功") {
           wx.navigateTo({
             url: "/pages/travel_three/travel?flow_no=" + res.data.flow_no + "&" + "lowerCaseTotal=" + res.data.lowerCaseTotal + "&" + "capitalTotal=" + res.data.capitalTotal,
-            
+
           })
         }
       }
@@ -396,7 +432,7 @@ Page({
   },
   // 监听金额输入框
   ToPlace: function(e) {
-    console.log(e)
+    console.log(this.data)
     let itemList = this.data.item_list
     // 当前操作的索引
     let index = e.currentTarget.dataset.index;
@@ -479,6 +515,77 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function() {
+
+  },
+  // 进入页面遍历执行是否有原始数据
+  itemTwo: function() {
+    var that = this
+    wx.request({
+      url: phoneUrl,
+      method: "POST",
+      data: {
+        service: "selectItemsTwo",
+        flow_no: this.data.flow_no,
+      },
+      header: {
+        "content-type": "application/json"
+      },
+      success: function(res) {
+        console.log(res)
+        var itemList = res.data.itemsList
+        if (itemList != '') {
+          console.log('2')
+          var detList = []
+          for (var i in itemList) {
+            // 获取出差截至日期
+            var returnTimeStr = itemList[i].endTimeStr
+            var timeStr = returnTimeStr.split(" ")
+            // 获取出差开始日期
+            var setOffTimeStr = itemList[i].startTimeStr
+            var timeEnd = setOffTimeStr.split(" ")
+            var temp = {
+              type: itemList[i].type,
+              travel_place: itemList[i].travelPlace,
+              type: itemList[i].type,
+              vehicle: itemList[i].vehicle,
+              amount: itemList[i].amount,
+              mark: itemList[i].mark,
+              start_time: timeEnd[0],
+              starTime: timeEnd[1],
+              end_time: timeStr[0],
+              endTime: timeStr[1]
+            }
+            detList.push(temp)
+          }
+          console.log(detList)
+          that.setData({
+            item_list: detList
+          })
+        }
+        // item_list: [{
+        //   // 补助类型：1-7
+        //   'type': '1',
+        //   // 交通工具
+        //   'vehicle': '汽车',
+        //   // 人数
+        //   'travel_place': '',
+        //   // 开始时间
+        //   'start_time': '请选择开始日期',
+        //   'starTime': '时间',
+        //   // 结束时间
+        //   'end_time': '请选择结束日期',
+        //   'endTime': '时间',
+        //   // 金额
+        //   'amount': '',
+        // }]
+
+      }
+    })
+  },
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function() {
     var that = this;
     // 获取缓存内的餐补
     wx.getStorage({
@@ -498,12 +605,17 @@ Page({
         })
       }
     })
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function() {
+    // 获取缓存内的出差补助
+    wx.getStorage({
+      key: "flow_no",
+      success: function(res) {
+        that.setData({
+          flow_no: res.data
+        })
+      }
+    })
+    // 进入页面遍历执行
+    that.itemTwo()
 
   },
 

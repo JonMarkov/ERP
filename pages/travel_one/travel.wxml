@@ -1,6 +1,6 @@
 <!-- 清空按钮 -->
 <view class='travel_top'>
-  <button>清空当前页面</button>
+  <button bindtap='Todelete'>清空当前页面</button>
 </view>
 <!-- 三步走 -->
 <view class='travel_centent'>
@@ -22,15 +22,14 @@
   <view class='table_title'>
     <text class='title_one'>1.基本信息</text>
   </view>
-
   <view class='table_centent'>
     <text>姓名:</text>
-    <input maxlength="10" placeholder="请输入姓名" value="{{personNum}}" bindinput='personNum' placeholder-class="placeholder_input" />
+    <input maxlength="10" disabled="disabled" placeholder="请输入姓名" value="{{personNum}}" bindinput='personNum' placeholder-class="placeholder_input" />
   </view>
 
   <view class='table_centent'>
     <text>职位:</text>
-    <input maxlength="10" placeholder="请输入您的职位" value="{{positionNum}}" bindinput='positionNum' placeholder-class="placeholder_input" />
+    <input maxlength="10" disabled="disabled" placeholder="请输入您的职位" value="{{positionNum}}" bindinput='positionNum' placeholder-class="placeholder_input" />
   </view>
   <view class='table_centent'>
     <text>公出起始日期</text>

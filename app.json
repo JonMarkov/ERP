@@ -1,8 +1,9 @@
 {
   "pages": [
     "pages/travel_one/travel",
-    "pages/travel_three/travel",
     "pages/index/index",
+    "pages/travel_three/travel",
+    "pages/travel_two/travel",
     "pages/indexCode/indexCode",
     "pages/changePass/changePass",
     "pages/home/home",
@@ -13,7 +14,6 @@
     "pages/approval_contract/approval_contract",
     "pages/approval_entertain/approval_entertain",
     "pages/appList/appList",
-    "pages/travel_two/travel",
     "pages/myLaunchList/myLaunchList",
     "pages/launchList/LaunchList",
     "pages/approval_out/approval_out_edit",

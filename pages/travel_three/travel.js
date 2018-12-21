@@ -8,20 +8,12 @@ Page({
   data: {
     array: ['餐饮票', '车船票', '火车票', '机票'],
     invoice: [{
-        index: 0,
-        id: 0,
-        type: '1',
-        images: [],
-        imagesBase: []
-      },
-      {
-        index: 0,
-        id: 1,
-        type: '2',
-        images: [],
-        imagesBase: []
-      }
-    ]
+      index: 0,
+      id: 0,
+      type: '1',
+      images: [],
+      imagesBase: []
+    }]
   },
 
   /**
@@ -42,7 +34,7 @@ Page({
     var temp = {
       index: 0,
       id: inList.length,
-      type: '1',
+      type: '',
       images: [],
       imagesBase: []
     }
@@ -140,8 +132,42 @@ Page({
       invoice: inIndex
     })
   },
-  ToTapSub:function(){
-      console.log(this.data)
+  ToTapSub: function() {
+    console.log(this.data)
+    var ListImg = this.data.invoice
+    var pic_list = []
+    for (var i in ListImg) {
+      console.log(i)
+      var typeWZ = this.data.array[ListImg[i].index]
+      var temp = {
+        pic_str: ListImg[i].imagesBase,
+        type: typeWZ
+      }
+      pic_list.push(temp)
+    }
+    console.log(pic_list)
+    wx.request({
+      url: phoneUrl,
+      method: "POST",
+      data: {
+        service: "submitTravelCostThree",
+        flow_no: this.data.flow_no,
+        user_id: this.data.user.user_id,
+        m_list: pic_list
+      },
+      header: {
+        "content-type": "application/json"
+      },
+      success: function(res) {
+        console.log(res.data)
+        if (res.data.result_desc == "提交成功") {
+          // wx.navigateTo({
+          //   url: "/pages/travel_three/travel?flow_no=" + res.data.flow_no + "&" + "lowerCaseTotal=" + res.data.lowerCaseTotal + "&" + "capitalTotal=" + res.data.capitalTotal,
+
+          // })
+        }
+      }
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -154,7 +180,15 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
+    var that = this
+    wx.getStorage({
+      key: "user",
+      success: function(res) {
+        that.setData({
+          user: res.data
+        })
+      }
+    })
   },
 
   /**

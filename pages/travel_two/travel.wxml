@@ -1,6 +1,6 @@
 <!-- 清空按钮 -->
 <view class='travel_top'>
-  <button>清空当前页面</button>
+  <button bindtap='TodetItem'>清空当前页面</button>
 </view>
 <!-- 三步走 -->
 <view class='travel_centent'>
@@ -35,7 +35,7 @@
       <text class='title_one' wx:if="{{item.type == '5'}}">{{index + 1}} 其他费用</text>
       <text class='title_one' wx:if="{{item.type == '6'}}">{{index + 1}} 出差补助</text>
       <text class='title_one' wx:if="{{item.type == '7'}}">{{index + 1}} 伙食补助</text>
-      <text class='title_two'>删除</text>
+      <text class='title_two' data-index="{{index}}" bindtap='ToRomvo'>删除</text>
     </view>
     <!-- 文本第一行输入 其中存在if语句，判断7种状态中的一个-->
     <view class='table_centent'>
@@ -87,18 +87,18 @@
       <text wx:if="{{item.type == '2'||item.type == '3'||item.type == '4'||item.type == '5'}}">金额</text>
       <text wx:if="{{item.type == '6'||item.type == '7'}}">标准</text>
       <view wx:if="{{item.type == '1'}}">
-        <picker bindchange="bindPickerChange" data-index = "{{index}}" value="{{index}}" range="{{array}}">
+        <picker bindchange="bindPickerChange" data-index="{{index}}" value="{{index}}" range="{{array}}">
           <view class="picker">
             {{item.vehicle}}
           </view>
         </picker>
       </view>
-      <input maxlength="10" placeholder="请输入金额" value='{{item.amount}}' placeholder-class="placeholder_input" wx:if="{{item.type == '2'||item.type == '3'||item.type == '4'||item.type == '5'}}" />
+      <input maxlength="10" placeholder="请输入金额" value='{{item.amount}}' placeholder-class="placeholder_input" wx:if="{{item.type == '2'||item.type == '3'||item.type == '4'||item.type == '5'}}" data-index="{{index}}" bindinput='ToPlace' />
       <text wx:if="{{item.type == '6'}}">{{foodAllowance}}</text>
       <text wx:if="{{item.type == '7'}}">{{travelAllowance}}</text>
     </view>
     <!-- 第四行输入 其中存在if语句，判断7种状态中的一个-->
-    <view class='table_centent' wx:if="{{item.type=='1'||item.type=='6'||item.type=='7'}}">
+    <view class='table_centent' wx:if="{{item.type=='1'||item.type=='6'||item.type=='7'||item.type=='5'}}">
       <text wx:if="{{item.type=='1'||item.type=='6'||item.type=='7'}}">金额</text>
       <text wx:if="{{item.type=='5'}}">输入框</text>
       <input maxlength="10" placeholder="请输入金额" value='{{item.amount}}' placeholder-class="placeholder_input" bindinput='ToPlace' data-index="{{index}}" wx:if="{{item.type=='1'||item.type=='6'||item.type=='7'}}" />
@@ -119,15 +119,15 @@
 <view class="modalDlg" wx:if="{{showModal}}">
   <!-- 内容 -->
   <view class='mask_one'>
-    <text class="{{selOne?'mask_text_sel':'mask_text'}}" bindtap='selOne'>车船费</text>
-    <text class="{{selTwo?'mask_text_sel':'mask_text'}}" bindtap='selTwo'>住宿费</text>
+    <text class="{{selOne?'mask_text_sel':'mask_text'}}" bindtap='selOne' data-i="1">车船费</text>
+    <text class="{{selTwo?'mask_text_sel':'mask_text'}}" bindtap='selTwo' data-i="1">住宿费</text>
   </view>
   <view class='mask_one'>
-    <text class="{{selThree?'mask_text_sel':'mask_text'}}" bindtap='selThree'>培训费</text>
-    <text class="{{selFour?'mask_text_sel':'mask_text'}}" bindtap='selFour'>其他费用</text>
+    <text class="{{selThree?'mask_text_sel':'mask_text'}}" bindtap='selThree' data-i="1">会议费</text>
+    <text class="{{selFour?'mask_text_sel':'mask_text'}}" bindtap='selFour' data-i="1">培训费</text>
   </view>
   <view class='mask_one'>
-    <text class="{{selFive?'mask_text_sel':'mask_text'}}" bindtap='selFive'>会议费</text>
+    <text class="{{selFive?'mask_text_sel':'mask_text'}}" bindtap='selFive'>其他费用</text>
     <text class="{{selSix?'mask_text_sel':'mask_text'}}" bindtap='selSix'>出差补助</text>
   </view>
   <view class='mask_one' style='dispaly:flex;justify-content: flex-start;margin-left:96rpx'>
