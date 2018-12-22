@@ -47,13 +47,13 @@ page {
 }
 
 .content_left text {
-  font-size: 26rpx;
+  font-size: 20rpx;
 }
 
 .content_right {
   width: 40%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -90,4 +90,48 @@ page {
 .list_right {
   display: flex;
   flex-direction: row;
+}
+/* icon图表 */
+.con {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+}
+
+.bow {
+  width: 80rpx;
+  height: 80rpx;
+  background: #fff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  border: 1rpx solid #a3c6fc;
+  color: #90b9f9;
+  font-size: 18rpx;
+}
+
+.bow_icon {
+  background: #8ebaf7;
+  width: 70rpx;
+  height: 20rpx;
+  color: #fff;
+  padding: 5rpx 10rpx 2rpx 0px;
+  text-align: right;
+  margin-left: -40rpx;
+  z-index: 0;
+  border-top-right-radius: 15rpx;
+  border-bottom-right-radius: 15rpx;
+  font-size: 12rpx;
+}
+.right_dian{
+  margin-top: 15rpx;
+}
+.right_dian image{
+  width: 5rpx;
+  height: 67rpx
+}
+.con_one{
+  margin-left: 36rpx
 }

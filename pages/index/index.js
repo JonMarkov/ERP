@@ -6,7 +6,8 @@ Page({
    */
   data: {
     loginPhone: '',
-    loginPassword: ''
+    loginPassword: '',
+    Malogin: ''
   },
 
   /**
@@ -29,7 +30,6 @@ Page({
   },
   // 登录
   subLogin: function() {
-    console.log(this.data)
     var phoneUrl = getApp().globalData.wx_url_1;
     var loginPhone = this.data.loginPhone;
     var loginPassword = this.data.loginPassword;
@@ -47,7 +47,12 @@ Page({
       },
       success: function(res) {
         console.log(res.data)
-        if (res.data.result_desc != "用户名或密码不正确") {
+        if (res.data.result_desc == "登陆成功") {
+          // 再本地缓存设置参数
+          wx.setStorage({
+            key: "Malogin",
+            data: 'ture'
+          })
           // 再本地缓存设置参数
           wx.setStorage({
             key: "user",
@@ -63,6 +68,7 @@ Page({
             key: "travelAllowance",
             data: res.data.travelAllowance
           })
+
           wx.switchTab({
             url: '/pages/home/home',
           })
@@ -73,8 +79,6 @@ Page({
           })
           return
         }
-
-
       }
     })
   },
@@ -95,6 +99,21 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
+    var _this = this
+    // 获取登录记录缓存
+    wx.getStorage({
+      key: "Malogin",
+      success: function(res) {
+        console.log(res)
+        // 如果存在登录状态则跳转
+        if (res.data != '') {
+          wx.switchTab({
+            url: '/pages/home/home',
+          })
+          return
+        }
+      }
+    })
 
   },
 

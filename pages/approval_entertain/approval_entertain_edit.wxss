@@ -39,3 +39,10 @@ input{
   border-radius: 10rpx;
   padding: 10rpx
 }
+.sele {
+  display: flex;
+  flex: row;
+}
+.sele picker {
+  margin-left: 10rpx;
+}

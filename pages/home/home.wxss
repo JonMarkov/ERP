@@ -81,8 +81,8 @@ page {
   margin-top: -75rpx
 }
 .icon_99{
- width: 118rpx;
- height: 76rpx;
+ width: 177rpx;
+ height: 120rpx;
 }
 .home_center_text{
   display: flex;
@@ -92,8 +92,8 @@ page {
   margin-bottom: 20rpx
 }
 .img_icon{
-  width: 118rpx;
-  height: 76rpx;
+  width: 177rpx;
+  height: 120rpx;
 }
 .text_icon{
   display: flex;

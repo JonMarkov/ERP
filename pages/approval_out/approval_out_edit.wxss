@@ -47,7 +47,7 @@ page {
   flex-direction: row;
 }
 
-.btn_text text {
+.JT {
   display: flex;
   flex-direction: row;
   border: 1rpx solid #949494;
@@ -56,6 +56,17 @@ page {
   margin-top: 10rpx;
   border-radius: 10rpx;
   color: #949494
+}
+.JTLan{
+display: flex;
+  flex-direction: row;
+  border: 1rpx solid #8ebaf7;
+  margin-right: 10rpx;
+  padding: 6rpx 30rpx;
+  margin-top: 10rpx;
+  border-radius: 10rpx;
+  background: #8ebaf7;
+  color: #fff
 }
 
 .placeholder_input {

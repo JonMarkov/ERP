@@ -6,7 +6,7 @@
   </view>
   <view class='home_top_center'>
     <swiper class='swiper-box' autoplay='{{true}}' interval='2000' vertical='{{true}}' circular='{{true}}'>
-      <swiper-item class='item' wx:for='{{txtlist}}'>{{index + 1}}、{{item}}</swiper-item>
+      <swiper-item class='item' wx:for='{{txtlist}}' wx:key="">{{index + 1}}、{{item}}</swiper-item>
     </swiper>
   </view>
   <view class='home_top_right'>
