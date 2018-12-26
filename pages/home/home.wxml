@@ -6,11 +6,11 @@
   </view>
   <view class='home_top_center'>
     <swiper class='swiper-box' autoplay='{{true}}' interval='2000' vertical='{{true}}' circular='{{true}}'>
-      <swiper-item class='item' wx:for='{{txtlist}}' wx:key="">{{index + 1}}、{{item}}</swiper-item>
+      <swiper-item class='item' bindtap="ToNotice" wx:for='{{txtlist}}' wx:key="" data-index="{{item.id}}">{{item.content}}</swiper-item>
     </swiper>
   </view>
   <view class='home_top_right'>
-    <image src='../../image/logo.jpg'></image>
+    <image src='../../image/logo.jpg' bindtap='ToNoticeList'></image>
   </view>
 </view>
 <!-- 业务入口 -->
@@ -29,7 +29,6 @@
       <view class='text_icon'>
         <image src='../../image/pulic/pending_icon.png' class='icon_99'></image>
         <text class='wenzi'>待我审批</text>
-        <text class='text_num'>12</text>
       </view>
     </view>
   </view>

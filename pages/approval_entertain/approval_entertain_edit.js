@@ -106,13 +106,6 @@ Page({
   // 提交
   TJywzd: function() {
     console.log(this.data)
-    if (this.data.SQRY == '') {
-      wx.showModal({
-        title: '提示',
-        content: '请填写申请人员',
-      })
-      return
-    }
     if (this.data.LFDW == '') {
       wx.showModal({
         title: '提示',
@@ -198,7 +191,11 @@ Page({
         "content-type": "application/json"
       },
       success: function (res) {
-        console.log(res)
+        if (res.data.result_desc == "申请提交成功") {
+          wx.switchTab({
+            url: '/pages/refer_sub/refer_sub'
+          })
+        }
       }
     })
   },

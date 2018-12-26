@@ -3,43 +3,43 @@
   <view class='out_basic'>
     <view class='basic_content'>
       <text>申请人员：</text>
-      <text>macong</text>
+      <text>{{user.user_name}}</text>
     </view>
     <view class='basic_content'>
       <text>申请日期：</text>
-      <text>2018-08-08 14:09</text>
+      <text>{{detList.createDate}}</text>
     </view>
     <view class='basic_content'>
       <text>来访单位</text>
-      <text>北京博众原创</text>
+      <text>{{detList.visitUnit}}</text>
     </view>
     <view class='basic_content'>
       <text>出差事由：</text>
-      <text>吃饭</text>
+      <text>{{detList.visitReason}}</text>
     </view>
     <view class='basic_content'>
       <text>用餐地点：</text>
-      <text>酒店</text>
+      <text>{{detList.eatPlace}}</text>
     </view>
     <view class='basic_content'>
       <text>住宿地点：</text>
-      <text>酒店</text>
+      <text>{{detList.sleepPlace}}</text>
     </view>
     <view class='basic_content'>
       <text>来访人数:</text>
-      <text>3</text>
+      <text>{{detList.visiter}}</text>
     </view>
     <view class='basic_content'>
       <text>来访人员:</text>
-      <text>张三，李四，王五</text>
+      <text>{{detList.visitSum}}</text>
     </view>
     <view class='basic_content'>
       <text>陪同人数:</text>
-      <text>1</text>
+      <text>{{detList.escortSum}}</text>
     </view>
     <view class='basic_content'>
       <text>陪同人员:</text>
-      <text>张三</text>
+      <text>{{detList.escorter}}</text>
     </view>
     <view class='icon_sp'>
       <!-- icon图表 -->
@@ -62,5 +62,19 @@
         <view class='bow_icon'>已同意</view>
       </view>
     </view>
+  </view>
+
+  <!-- 待审批显示开始 -->
+  <view class="container" class="zn-uploadimg" wx:if="{{MaStatus=='1'}}">
+    <text bindtap="ToReject" data-status='reject'>审批通过</text>
+    <text bindtap="ToAdopt" data-status='adopt'>审批驳回</text>
+  </view>
+  <modal id="modal" hidden="{{hiddenmodalput}}" title="预约信息" confirm-text="提交" cancel-text="取消" bindcancel="cancel" bindconfirm="confirm">
+    <textarea class='testTk' bindinput='ToTestTk' value='{{reason}}'></textarea>
+  </modal>
+  <!-- 待审批显示结束 -->
+  <view class="container" class="zn-uploadimg" wx:if="{{MaStatus=='0'}}">
+    <text bindtap="ToRecall" data-status='reject'>撤回申请</text>
+    <text bindtap="ToEdit" data-status='adopt'>再次编辑提交</text>
   </view>
 </view>

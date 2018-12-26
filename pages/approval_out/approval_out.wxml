@@ -6,15 +6,15 @@
     </view>
     <view class='basic_content'>
       <text>申请人员：</text>
-      <text>macong</text>
+      <text>{{user.user_name}}</text>
     </view>
     <view class='basic_content'>
       <text>申请日期：</text>
-      <text>2018-08-08 14:09</text>
+      <text>{{detList.createDate}}</text>
     </view>
     <view class='basic_content'>
       <text>出差事由：</text>
-      <text>会见客户等</text>
+      <text>{{detList.travelReason}}</text>
     </view>
   </view>
   <!-- 出差时间 -->
@@ -24,15 +24,15 @@
     </view>
     <view class='basic_content'>
       <text>出差前往时间</text>
-      <text>2018-08-08 14:09</text>
+      <text>{{detList.setOffTime}}</text>
     </view>
     <view class='basic_content'>
       <text>出差返回时间</text>
-      <text>2018-08-08 14:09</text>
+      <text>{{detList.returnTime}}</text>
     </view>
     <view class='basic_content'>
       <text>出差天数</text>
-      <text>共4天</text>
+      <text>共{{detList.travelDay}}天</text>
     </view>
   </view>
   <!-- 出差目的地 -->
@@ -42,15 +42,15 @@
     </view>
     <view class='basic_content'>
       <text>出差目的地</text>
-      <text>2018-08-08 14:09</text>
+      <text>{{detList.destination}}</text>
     </view>
     <view class='basic_content'>
       <text>出差途径地</text>
-      <text>2018-08-08 14:09</text>
+      <text>{{detList.way}}</text>
     </view>
     <view class='basic_content'>
       <text>出差里程</text>
-      <text>178公里</text>
+      <text>{{detList.mileage}}</text>
     </view>
   </view>
   <!-- 出差目的地 -->
@@ -60,7 +60,7 @@
     </view>
     <view class='basic_content'>
       <text>出差乘坐工具</text>
-      <text>火车</text>
+      <text>{{detList.transportation}}</text>
     </view>
     <view class='icon_sp'>
       <!-- icon图表 -->
@@ -70,7 +70,7 @@
       </view>
 
       <view class='con'>
-          <image src='../../image/pulic/dian.png'></image>
+        <image src='../../image/pulic/dian.png'></image>
         <view class='bow'>杨总</view>
         <view class='bow_icon'>已同意</view>
       </view>
@@ -85,10 +85,17 @@
 
 
 
-  <view class="container" class="zn-uploadimg">
-    <button type="primary" bindtap="modalinput">modal有输入框</button>
+  <!-- 待审批显示开始 -->
+  <view class="container" class="zn-uploadimg" wx:if="{{MaStatus=='1'}}">
+    <text bindtap="ToReject" data-status='reject'>审批通过</text>
+    <text bindtap="ToAdopt" data-status='adopt'>审批驳回</text>
   </view>
   <modal id="modal" hidden="{{hiddenmodalput}}" title="预约信息" confirm-text="提交" cancel-text="取消" bindcancel="cancel" bindconfirm="confirm">
-    <textarea class='testTk'></textarea>
+    <textarea class='testTk' bindinput='ToTestTk' value='{{reason}}'></textarea>
   </modal>
+  <!-- 待审批显示结束 -->
+  <view class="container" class="zn-uploadimg" wx:if="{{MaStatus=='0'}}">
+    <text bindtap="ToRecall" data-status='reject'>撤回申请</text>
+    <text bindtap="ToEdit" data-status='adopt'>再次编辑提交</text>
+  </view>
 </view>

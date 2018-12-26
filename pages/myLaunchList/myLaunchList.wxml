@@ -18,7 +18,7 @@
 
 
 <!-- 报销单 -->
-<view class='refer' bindtap='ToPendingDet' wx:for="{{fromList}}" wx:key="">
+<view class='refer' bindtap='ToPendingDet' data-userName="{{item.operate_user_name}}" data-flowId="{{item.flow_id}}" data-index="{{item.wf_id}}" wx:for="{{fromList}}" wx:key="">
   <view class='refer_title'>
     <text>{{item.flow_name}}</text>
   </view>

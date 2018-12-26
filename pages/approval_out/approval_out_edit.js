@@ -156,14 +156,6 @@ Page({
     this.setData({
       ZZtime: ZZtime
     })
- 
-    if (this.data.SQRY == '') {
-      wx.showModal({
-        title: '提示',
-        content: '请填写申请人员',
-      })
-      return
-    }
     if (this.data.CCSY == '') {
       wx.showModal({
         title: '提示',
@@ -192,13 +184,18 @@ Page({
         travel_day: this.data.ZZtime,
         destination: regionMD,
         way: regionTJ,
-        user_id:this.data.user.user_id
+        user_id: this.data.user.user_id
       },
       header: {
         "content-type": "application/json"
       },
       success: function(res) {
-        console.log(res)
+        if (res.data.result_desc == "申请提交成功") {
+          wx.switchTab({
+            url: '/pages/refer_sub/refer_sub'
+          })
+        }
+
       }
     })
 
@@ -219,7 +216,7 @@ Page({
     // 获取本地缓存内的uesr
     wx.getStorage({
       key: "user",
-      success: function (res) {
+      success: function(res) {
         that.setData({
           user: res.data
         })

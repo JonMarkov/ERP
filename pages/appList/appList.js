@@ -16,38 +16,42 @@ Page({
 
   },
   // 跳转审批详情，按照状态跳转
-  ToPendingDet: function (e) {
-    console.log(e.currentTarget.dataset.index)
+  ToPendingDet: function(e) {
+    console.log(this.data)
+    console.log(e)
     var index = e.currentTarget.dataset.index;
+    var flowId = e.currentTarget.dataset.flowid;
+    var username = e.currentTarget.dataset.username
+    console.log(username)
     // 出差审批单
     if (index == 2) {
       wx.navigateTo({
-        url: '/pages/approval_out/approval_out',
+        url: '/pages/approval_out/approval_out?flow_id=' + flowId + '&operateUserName=' + username,
       })
       // 公车使用单
     } else if (index == 4) {
       wx.navigateTo({
-        url: '/pages/approval_bus/approval_bus',
+        url: '/pages/approval_bus/approval_bus?flow_id=' + flowId + '&operateUserName=' + username,
       })
       // 合同审批单
     } else if (index == 5) {
       wx.navigateTo({
-        url: '/pages/approval_contract/approval_contract',
+        url: '/pages/approval_contract/approval_contract?flow_id=' + flowId + '&operateUserName=' + username,
       })
       // 业务招待
     } else if (index == 3) {
       wx.navigateTo({
-        url: '/pages/approval_entertain/approval_entertain',
+        url: '/pages/approval_entertain/approval_entertain?flow_id=' + flowId + '&operateUserName=' + username,
       })
       // 差旅
     } else if (index == 1) {
       wx.navigateTo({
-        url: '/pages/travel_one/travel_one',
+        url: '/pages/travel_one/travel?flow_id=' + flowId + '&operateUserName=' + username,
       })
     }
   },
   // 遍历
-  applyErgodi: function () {
+  applyErgodi: function() {
     var that = this
     wx.request({
       url: phoneUrl,
@@ -61,7 +65,7 @@ Page({
       header: {
         "content-type": "application/json"
       },
-      success: function (res) {
+      success: function(res) {
         console.log(res)
         var MyList = res.data.approvalList;
         var FromList = [];
@@ -71,8 +75,9 @@ Page({
           let apply_time = that.timestampToTime(MyList[i].apply_time);
           let flow_no = MyList[i].flow_no;
           let wf_id = MyList[i].wf_id;
-          let p_status = MyList[i].p_status||'';
-          let operate_name = MyList[i].operate_name||''
+          let p_status = MyList[i].p_status || '';
+          let operate_name = MyList[i].operate_name || '';
+          let flow_id = MyList[i].flow_id
           // 下册
           let status = MyList[i].status
           let temp = {
@@ -83,7 +88,8 @@ Page({
             status: status,
             wf_id: wf_id,
             p_status: p_status,
-            operate_name: operate_name
+            operate_name: operate_name,
+            flow_id: flow_id
 
           }
           FromList.push(temp)
@@ -95,7 +101,7 @@ Page({
     })
   },
   // 时间戳转换时间
-  timestampToTime: function (timestamp) {
+  timestampToTime: function(timestamp) {
     var date = new Date(timestamp * 1); //时间戳为10位需*1000，时间戳为13位的话不需乘1000
     var Y = date.getFullYear() + '-';
     var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
@@ -115,12 +121,12 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
     var that = this;
     // 获取本地缓存内的uesr
     wx.getStorage({
       key: "user",
-      success: function (res) {
+      success: function(res) {
         that.setData({
           user: res.data
         })

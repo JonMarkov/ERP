@@ -1,5 +1,6 @@
 // pages/home/home.js
 let Charts = require('../../utils/wxcharts.js')
+var phoneUrl = getApp().globalData.wx_url_1;
 Page({
 
   /**
@@ -19,22 +20,74 @@ Page({
   onLoad: function(options) {
 
   },
-  // 待我审批-跳转
-  ToPending: function() {
-    wx.navigateTo({
-      url: '/pages/appList/appList',
-    })
-  },
   // 我发起的-跳转
   ToLaunch: function() {
+    // 把跳转信息本地缓存
+    wx.setStorage({
+      key: "MaStatus",
+      data: 0
+    })
     wx.navigateTo({
       url: '/pages/launchList/LaunchList',
     })
   },
+  // 待我审批-跳转
+  ToPending: function() {
+    // 把跳转信息本地缓存
+    wx.setStorage({
+      key: "MaStatus",
+      data: 1
+    })
+    wx.navigateTo({
+      url: '/pages/appList/appList',
+    })
+  },
+
   // 我审批的
   ToApproval: function() {
+    // 把跳转信息本地缓存
+    wx.setStorage({
+      key: "MaStatus",
+      data: 2
+    })
     wx.navigateTo({
       url: '/pages/myLaunchList/myLaunchList',
+    })
+  },
+  // 查询公告
+  httpNotice: function() {
+    var that = this
+    wx.request({
+      url: phoneUrl,
+      method: "POST",
+      data: {
+        service: "noticeList",
+      },
+      header: {
+        "content-type": "application/json"
+      },
+      success: function(res) {
+        console.log(res.data.notice_list)
+        var detList = res.data.notice_list
+        that.setData({
+          txtlist: detList
+        })
+        console.log(that.data)
+      }
+    })
+  },
+  // 公告详情
+  ToNotice: function(e) {
+    console.log(e.currentTarget.dataset.index)
+    var index = e.currentTarget.dataset.index
+    wx.navigateTo({
+      url: '/pages/notice_det/Notice_det?index=' + index,
+    })
+  },
+  // 公告列表
+  ToNoticeList: function() {
+    wx.navigateTo({
+      url: '/pages/notice/Notice',
     })
   },
   /**
@@ -48,7 +101,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
+    this.httpNotice()
   },
 
   /**

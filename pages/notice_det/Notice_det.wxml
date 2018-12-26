@@ -1,17 +1,11 @@
-<view class='det'>
-<view class='det_title'>
-  <text>财务通知</text>
-</view>
-<view class='det_date'>
-  <text>2019-09-08</text>
-</view>
-<view class='det_com'>
-  <text>dataItem Object数据列表每项结构定义 
-dataItem.data Array required (饼图、圆环图为Number) 数据，如果传入null图表该处出现断点 
-dataItem.color String 例如#7cb5ec 不传入则使用系统默认配色方案 
-dataItem.name String 数据名称 
-dateItem.format Function 自定义显示数据内容
---------------------- 
-</text>
-</view>
+<view class='det' wx:for="{{txtlist}}">
+  <view class='det_title'>
+    <text>{{item.name}}</text>
+  </view>
+  <view class='det_date'>
+    <text>{{item.createDate}}</text>
+  </view>
+  <view class='det_com'>
+    <text>{{item.content}}</text>
+  </view>
 </view>

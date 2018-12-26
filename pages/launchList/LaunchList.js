@@ -19,32 +19,35 @@ Page({
   },
   // 跳转审批详情，按照状态跳转
   ToPendingDet: function(e) {
-    console.log(e.currentTarget.dataset.index)
+    console.log(this.data)
+    console.log(e)
     var index = e.currentTarget.dataset.index;
+    var flowId = e.currentTarget.dataset.flowid;
+    var username = e.currentTarget.dataset.username
     // 出差审批单
     if (index == 2) {
       wx.navigateTo({
-        url: '/pages/approval_out/approval_out',
+        url: '/pages/approval_out/approval_out?flow_id=' + flowId + '&operateUserName=' + username,
       })
       // 公车使用单
     } else if (index == 4) {
       wx.navigateTo({
-        url: '/pages/approval_bus/approval_bus',
+        url: '/pages/approval_bus/approval_bus?flow_id=' + flowId + '&operateUserName=' + username,
       })
       // 合同审批单
     } else if (index == 5) {
       wx.navigateTo({
-        url: '/pages/approval_contract/approval_contract',
+        url: '/pages/approval_contract/approval_contract?flow_id=' + flowId + '&operateUserName=' + username,
       })
       // 业务招待
     } else if (index == 3) {
       wx.navigateTo({
-        url: '/pages/approval_entertain/approval_entertain',
+        url: '/pages/approval_entertain/approval_entertain?flow_id=' + flowId + '&operateUserName=' + username,
       })
       // 差旅
     } else if (index == 1) {
       wx.navigateTo({
-        url: '/pages/travel_one/travel_one',
+        url: '/pages/travel_one/travel_see?flow_id=' + flowId + '&operateUserName=' + username,
       })
     }
   },
@@ -58,7 +61,7 @@ Page({
         service: "myApprovalList",
         user_id: this.data.user.user_id,
         current_page: 1,
-        page_size: 1,
+        page_size:10,
         // 查询全部
         status: -1,
         // 升序
@@ -77,6 +80,7 @@ Page({
           let apply_time = that.timestampToTime(MyList[i].apply_time);
           let flow_no = MyList[i].flow_no;
           let wf_id = MyList[i].wf_id;
+          let flow_id = MyList[i].flow_id
           // 右侧 1未通过  2为驳回
           let p_status = MyList[i].p_status
           // 下册
@@ -88,7 +92,8 @@ Page({
             flow_no: flow_no,
             p_status: p_status,
             status: status,
-            wf_id: wf_id
+            wf_id: wf_id,
+            flow_id: flow_id
           }
           FromList.push(temp)
         }

@@ -73,7 +73,7 @@ page {
 
 }
 .wenzi{
-  margin-left: -25rpx
+  margin-left: -68rpx
 }
 .text_num{
   font-size: 20rpx;

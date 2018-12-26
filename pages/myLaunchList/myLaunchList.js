@@ -16,23 +16,28 @@ Page({
 
   },
   // 跳转审批详情，按照状态跳转
-  ToPendingDet: function () {
-    if ('出差审批单') {
+  ToPendingDet: function (e) {
+    console.log(this.data)
+    console.log(e)
+    var index = e.currentTarget.dataset.index;
+    var flowId = e.currentTarget.dataset.flowid;
+    var username = e.currentTarget.dataset.username
+    if (index == 2) {
       wx.navigateTo({
-        url: '/pages/approval_out/approval_out',
+        url: '/pages/approval_out/approval_out?flow_id=' + flowId + '&operateUserName=' + username,
       })
-    } else if ('公车使用单') {
+    } else if (index == 4) {
       wx.navigateTo({
-        url: '/pages/approval_bus/approval_bus',
+        url: '/pages/approval_bus/approval_bus?flow_id=' + flowId + '&operateUserName=' + username,
       })
     } else if ('合同审批') {
       wx.navigateTo({
-        url: '/pages/approval_contract/approval_contract',
+        url: '/pages/approval_contract/approval_contract?flow_id=' + flowId + '&operateUserName=' + username,
       })
     } else {
       console.log('业务招待')
       wx.navigateTo({
-        url: '/pages/approval_entertain/approval_entertain',
+        url: '/pages/approval_entertain/approval_entertain?flow_id=' + flowId + '&operateUserName=' + username,
       })
     }
   },
@@ -71,6 +76,7 @@ Page({
           let p_status = MyList[i].p_status
           // 下册
           let status = MyList[i].status
+          let flow_id = MyList[i].flow_id
           let temp = {
             flow_name: flow_name,
             operate_user_name: operate_user_name,
@@ -80,7 +86,8 @@ Page({
             status: status,
             wf_id: wf_id,
             worker_name: worker_name,
-            p_list: p_list
+            p_list: p_list,
+            flow_id: flow_id
           }
           FromList.push(temp)
         }

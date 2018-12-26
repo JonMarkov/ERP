@@ -3,37 +3,37 @@
   <view class='out_basic'>
     <view class='basic_content'>
       <text>申请人员：</text>
-      <text>macong</text>
+      <text>{{user.user_name}}</text>
     </view>
     <view class='basic_content'>
       <text>申请日期：</text>
-      <text>2018-08-08 14:09</text>
+      <text>{{detList.createDate}}</text>
     </view>
     <view class='basic_content'>
       <text>车辆型号：</text>
-      <text>别克GL8</text>
+      <text>{{detList.carType}}</text>
     </view>
     <view class='basic_content'>
       <text>车牌号：</text>
-      <text>京A88888</text>
+      <text>{{detList.plateNumber}}</text>
     </view>
     <view class='basic_content'>
       <text>出差事由：</text>
-      <text>送人</text>
+      <text>{{detList.reason}}</text>
     </view>
     <view class='basic_content'>
       <text>目的地：</text>
-      <text>西三旗</text>
+      <text>{{detList.destination}}</text>
     </view>
     <view class='basic_content'>
       <text>同车人员:</text>
-      <text>张三，李四</text>
+      <text>{{detList.together}}</text>
     </view>
     <view class='basic_content'>
       <text>驾驶员:</text>
-      <text>阿虎</text>
+      <text>{{detList.driver}}</text>
     </view>
-   <view class='icon_sp'>
+    <view class='icon_sp'>
       <!-- icon图表 -->
       <view class='con'>
         <view class='bow'>杨总</view>
@@ -54,5 +54,19 @@
         <view class='bow_icon'>已同意</view>
       </view>
     </view>
+  </view>
+
+  <!-- 待审批显示开始 -->
+  <view class="container" class="zn-uploadimg" wx:if="{{MaStatus=='1'}}">
+    <text bindtap="ToReject" data-status='reject'>审批通过</text>
+    <text bindtap="ToAdopt" data-status='adopt'>审批驳回</text>
+  </view>
+  <modal id="modal" hidden="{{hiddenmodalput}}" title="预约信息" confirm-text="提交" cancel-text="取消" bindcancel="cancel" bindconfirm="confirm">
+    <textarea class='testTk' bindinput='ToTestTk' value='{{reason}}'></textarea>
+  </modal>
+  <!-- 待审批显示结束 -->
+  <view class="container" class="zn-uploadimg" wx:if="{{MaStatus=='0'}}">
+    <text bindtap="ToRecall" data-status='reject'>撤回申请</text>
+    <text bindtap="ToEdit" data-status='adopt'>再次编辑提交</text>
   </view>
 </view>

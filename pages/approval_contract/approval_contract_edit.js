@@ -98,14 +98,6 @@ Page({
   },
   // 提交
   TJht: function() {
-
-    if (this.data.SQRY == '') {
-      wx.showModal({
-        title: '提示',
-        content: '请填写申请人员',
-      })
-      return
-    }
     if (this.data.XMMC == '') {
       wx.showModal({
         title: '提示',
@@ -176,7 +168,7 @@ Page({
         person_in_charge_a: this.data.JFFZR,
         person_in_charge_b: this.data.YFFZR,
         sign_party_b: this.data.QYYF,
-        contract_no:this.data.HTH
+        contract_no: this.data.HTH
 
       },
       header: {
@@ -184,6 +176,11 @@ Page({
       },
       success: function(res) {
         console.log(res)
+        if (res.data.result_desc == "申请提交成功") {
+          wx.switchTab({
+            url: '/pages/refer_sub/refer_sub'
+          })
+        }
       }
     })
   },

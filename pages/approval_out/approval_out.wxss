@@ -83,3 +83,20 @@ page{
   border: 1rpx solid #000;
   width: 100%
 }
+.zn-uploadimg{
+  width: 100%;
+  display: flex;
+  flex-flow: row;
+  position: absolute;
+  bottom: 0rpx
+}
+.zn-uploadimg text{
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  background: #8ebaf7;
+  border: 1px solid #fff;
+  font-size: 26rpx;
+  padding: 20rpx;
+  color: #fff
+}
