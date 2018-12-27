@@ -30,22 +30,6 @@ Page({
     array: ['汽车', '火箭', '千里马', 'F1'],
     index: 0,
     item_list: [
-    //   {
-    //   // 补助类型：1-7
-    //   'type': '1',
-    //   // 交通工具
-    //   'vehicle': '汽车',
-    //   // 人数
-    //   'travel_place': '',
-    //   // 开始时间
-    //   'start_time': '请选择开始日期',
-    //   'starTime': '时间',
-    //   // 结束时间
-    //   'end_time': '请选择结束日期',
-    //   'endTime': '时间',
-    //   // 金额
-    //   'amount': '',
-    // }
     ]
   },
 
@@ -401,9 +385,9 @@ Page({
     })
   },
   // 类型七状态
-  selSeven: function() {
+  selSeven: function () {
     this.setData({
-      selSeven: true
+      selSeven: false
     })
   },
   // 监听人数输入框

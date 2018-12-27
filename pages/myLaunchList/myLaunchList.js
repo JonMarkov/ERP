@@ -6,17 +6,96 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    showModal: false,
+    statusTxt: '全部',
+    statusType: false,
+    status: '',
+    status_tpye: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
 
   },
+  // 点击费用明细出险弹出层
+  addDet: function() {
+    this.setData({
+      showModal: true,
+    })
+  },
+  // 点击弹出之后的选择
+  // 类型一状态
+  selOne: function(e) {
+    var status = e.currentTarget.dataset.i
+    var type = this.data.type
+    this.setData({
+      showModal: false,
+      statusTxt: '全部',
+      status: status
+    })
+    this.applyErgodi(type, status)
+
+  },
+  // 类型二状态
+  selTwo: function(e) {
+    var status = e.currentTarget.dataset.i
+    var type = this.data.type
+    this.setData({
+      showModal: false,
+      statusTxt: '待审核',
+      status: status
+    })
+    this.applyErgodi(type, status)
+  },
+  // 类型三状态
+  selThree: function(e) {
+    var status = e.currentTarget.dataset.i
+    var type = this.data.type
+    this.setData({
+      showModal: false,
+      statusTxt: '已通过',
+      status: status
+    })
+    this.applyErgodi(type, status)
+  },
+  // 类型四状态
+  selFour: function(e) {
+    var status = e.currentTarget.dataset.i
+    var type = this.data.type
+    this.setData({
+      showModal: false,
+      statusTxt: '审核中',
+      status: status
+    })
+    this.applyErgodi(type, status)
+  },
+  // 类五状态
+  selFive: function(e) {
+    var status = e.currentTarget.dataset.i
+    var type = this.data.type
+    this.setData({
+      showModal: false,
+      statusTxt: '已驳回',
+      status: status
+    })
+    this.applyErgodi(type, status)
+  },
+  // 类型六状态
+  selSix: function(e) {
+    var status = e.currentTarget.dataset.i
+    var type = this.data.type
+    this.setData({
+      showModal: false,
+      statusTxt: '已撤回',
+      status: status
+    })
+    this.applyErgodi(type, status)
+  },
+
   // 跳转审批详情，按照状态跳转
-  ToPendingDet: function (e) {
+  ToPendingDet: function(e) {
     console.log(this.data)
     console.log(e)
     var index = e.currentTarget.dataset.index;
@@ -41,8 +120,27 @@ Page({
       })
     }
   },
+  addTime: function(e) {
+    console.log(e.currentTarget.dataset.i)
+    var type = e.currentTarget.dataset.i
+    var status = this.data.status
+    // 判断状态
+    var status_type = this.data.statusType
+    if (status_type) {
+      this.setData({
+        statusType: false,
+        tpye: type
+      })
+    } else {
+      this.setData({
+        statusType: true,
+        tpye: type
+      })
+    }
+    this.applyErgodi(type, status)
+  },
   // 遍历
-  applyErgodi: function () {
+  applyErgodi: function(type, status) {
     var that = this
     wx.request({
       url: phoneUrl,
@@ -53,14 +151,14 @@ Page({
         current_page: 1,
         page_size: 1,
         // 查询全部
-        status:-1,
+        status: status,
         // 升序
-        type:1
+        type: type
       },
       header: {
         "content-type": "application/json"
       },
-      success: function (res) {
+      success: function(res) {
         console.log(res)
         var MyList = res.data.approvalList;
         var FromList = [];
@@ -98,7 +196,7 @@ Page({
     })
   },
   // 时间戳转换时间
-  timestampToTime: function (timestamp) {
+  timestampToTime: function(timestamp) {
     var date = new Date(timestamp * 1); //时间戳为10位需*1000，时间戳为13位的话不需乘1000
     var Y = date.getFullYear() + '-';
     var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
@@ -111,24 +209,26 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
     var that = this;
     // 获取本地缓存内的uesr
     wx.getStorage({
       key: "user",
-      success: function (res) {
+      success: function(res) {
         that.setData({
           user: res.data
         })
         // 遍历页面
-        that.applyErgodi()
+        var status = -1
+        var type =1
+        that.applyErgodi(type,status)
       }
     })
   },
@@ -136,35 +236,35 @@ Page({
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })

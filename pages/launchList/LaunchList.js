@@ -6,8 +6,12 @@ Page({
    * 页面的初始数据
    */
   data: {
+    showModal: false,
+    statusTxt: '全部',
+    statusType: false,
+    status: '',
+    status_tpye: '',
     fromList: [
-
     ]
   },
 
@@ -16,6 +20,80 @@ Page({
    */
   onLoad: function(options) {
 
+  },
+  // 点击费用明细出险弹出层
+  addDet: function() {
+    this.setData({
+      showModal: true,
+    })
+  },
+  // 点击弹出之后的选择
+  // 类型一状态
+  selOne: function(e) {
+    var status = e.currentTarget.dataset.i
+    var type = this.data.type
+    this.setData({
+      showModal: false,
+      statusTxt: '全部',
+      status: status
+    })
+    this.applyErgodi(type,status)
+
+  },
+  // 类型二状态
+  selTwo: function(e) {
+    var type = this.data.type
+    var status = e.currentTarget.dataset.i
+    this.setData({
+      showModal: false,
+      statusTxt: '待审核',
+      status: status
+    })
+    this.applyErgodi(type,status)
+  },
+  // 类型三状态
+  selThree: function(e) {
+    var type = this.data.type
+    var status = e.currentTarget.dataset.i
+    this.setData({
+      showModal: false,
+      statusTxt: '已通过',
+      status: status
+    })
+    this.applyErgodi(type,status)
+  },
+  // 类型四状态
+  selFour: function(e) {
+    var type = this.data.type
+    var status = e.currentTarget.dataset.i
+    this.setData({
+      showModal: false,
+      statusTxt: '审核中',
+      status: status
+    })
+    this.applyErgodi(type,status)
+  },
+  // 类五状态
+  selFive: function(e) {
+    var type = this.data.type
+    var status = e.currentTarget.dataset.i
+    this.setData({
+      showModal: false,
+      statusTxt: '已驳回',
+      status: status
+    })
+    this.applyErgodi(type,status)
+  },
+  // 类型六状态
+  selSix: function(e) {
+    var type = this.data.type
+    var status = e.currentTarget.dataset.i
+    this.setData({
+      showModal: false,
+      statusTxt: '已撤回',
+      status: status
+    })
+    this.applyErgodi(type, status)
   },
   // 跳转审批详情，按照状态跳转
   ToPendingDet: function(e) {
@@ -52,7 +130,7 @@ Page({
     }
   },
   // 遍历
-  applyErgodi: function() {
+  applyErgodi: function(type,status) {
     var that = this
     wx.request({
       url: phoneUrl,
@@ -61,11 +139,11 @@ Page({
         service: "myApprovalList",
         user_id: this.data.user.user_id,
         current_page: 1,
-        page_size:10,
+        page_size: 10,
         // 查询全部
-        status: -1,
+        status: status,
         // 升序
-        type: 1
+        type: type
       },
       header: {
         "content-type": "application/json"
@@ -103,7 +181,25 @@ Page({
       }
     })
   },
-
+  addTime: function (e) {
+    console.log(e.currentTarget.dataset.i)
+    var type = e.currentTarget.dataset.i
+    var status = this.data.status
+    // 判断状态
+    var status_type = this.data.statusType
+    if (status_type) {
+      this.setData({
+        statusType: false,
+        tpye: type
+      })
+    } else {
+      this.setData({
+        statusType: true,
+        tpye: type
+      })
+    }
+    this.applyErgodi(type, status)
+  },
   // 时间戳转换时间
   timestampToTime: function(timestamp) {
     var date = new Date(timestamp * 1); //时间戳为10位需*1000，时间戳为13位的话不需乘1000
@@ -136,7 +232,9 @@ Page({
           user: res.data
         })
         // 遍历页面
-        that.applyErgodi()
+        var status = -1
+        var type = 1
+        that.applyErgodi(type,status)
       }
     })
   },

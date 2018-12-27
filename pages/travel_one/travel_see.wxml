@@ -25,23 +25,23 @@
 
   <view class='table_centent'>
     <text>姓名:</text>
-   <text>mac</text>
+   <text>{{user.user_name}}</text>
   </view>
 
   <view class='table_centent'>
     <text>职位:</text>
-   <text>zhiwei</text>
+   <text>{{role}}</text>
   </view>
   <view class='table_centent'>
     <text>公出起始日期</text>
     <view class='sele'>
-      <text>345</text>
+      <text>{{set_off_time}}</text>
     </view>
   </view>
   <view class='table_centent'>
     <text>公出截止日期</text>
     <view class='sele'>
-      <text>123</text>
+      <text>{{return_time}}</text>
     </view>
   </view>
 
@@ -59,9 +59,11 @@
   </view>
   <view class='table_cause'>
     <text>出差事由</text>
-   <text>123</text>
+   <text>{{travel_reason}}</text>
   </view>
-  <view class='sub' bindtap='ToTapSub'>
-    <text>下一步</text>
+    <!-- 待审批显示结束 -->
+  <view class="container" class="zn-uploadimg" wx:if="{{MaStatus=='0'}}">
+    <text bindtap="ToRecall" data-status='reject'>撤回申请</text>
+    <text bindtap="ToEdit" data-status='adopt'>再次编辑提交</text>
   </view>
 </view>

@@ -95,22 +95,20 @@ Page({
         //console.log(base64)
       }
     })
-
-
   },
 
   // 删除图片
   removeImage(e) {
-    console.log(e.currentTarget.dataset.idx)
-    console.log(e.currentTarget.dataset.index)
-    // 大索引
-    var oneIdx = e.currentTarget.dataset.idx
-    // 小索引
-    var twoIndex = e.currentTarget.dataset.index
-    // 删除图片列表中当前项目
-    this.data.invoice[oneIdx].images.splice(twoIndex, 1)
-    // 删除base64图片列表当前项
-    this.data.invoice[oneIdx].imagesBase.splice(twoIndex, 1)
+    // 最外层大索引
+    var oneIndex = e.currentTarget.dataset.index
+    // 里层图片小索引
+    var twoIdx = e.currentTarget.dataset.idx
+    console.log(oneIndex)
+    console.log(twoIdx)
+    // // 删除图片列表中当前项目
+    this.data.invoice[oneIndex].images.splice(twoIdx, 1)
+    // // 删除base64图片列表当前项
+    this.data.invoice[twoIdx].imagesBase.splice(oneIndex, 1)
     var removeInvoice = this.data.invoice
     console.log(removeInvoice)
     this.setData({
@@ -193,11 +191,17 @@ Page({
       },
       success: function(res) {
         console.log(res.data)
-        if (res.data.result_desc == "提交成功") {
-          // wx.navigateTo({
-          //   url: "/pages/travel_three/travel?flow_no=" + res.data.flow_no + "&" + "lowerCaseTotal=" + res.data.lowerCaseTotal + "&" + "capitalTotal=" + res.data.capitalTotal,
 
-          // })
+        if (res.data.result_desc == "申请提交成功") {
+          wx.removeStorage({
+            key: 'flow_no',
+            success: function(res) {
+              console.log(res)
+            },
+          })
+          wx.switchTab({
+            url: '/pages/refer_sub/refer_sub'
+          })
         }
       }
     })
@@ -223,6 +227,7 @@ Page({
         })
       }
     })
+
   },
 
   /**

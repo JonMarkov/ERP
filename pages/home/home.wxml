@@ -1,7 +1,7 @@
 <!-- 广告通知部分 -->
 <view class='home_top'>
   <view class='home_top_left'>
-    <image src='../../image/logo.jpg'>
+    <image src='../../image/pulic/horn_icon.png'>
     </image>
   </view>
   <view class='home_top_center'>
@@ -10,7 +10,7 @@
     </swiper>
   </view>
   <view class='home_top_right'>
-    <image src='../../image/logo.jpg' bindtap='ToNoticeList'></image>
+    <image src='../../image/pulic/more_icon.png' bindtap='ToNoticeList'></image>
   </view>
 </view>
 <!-- 业务入口 -->

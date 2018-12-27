@@ -32,6 +32,7 @@ page {
 .home_top_center {
   width: 80%;
   font-size: 26rpx;
+  border-right: 1rpx solid #f4f4f4
 }
 .swiper-box{
   position: relative;
@@ -50,8 +51,10 @@ page {
 }
 
 .home_top_right image {
-  width: 30rpx;
-  height: 30rpx;
+  width: 41rpx;
+  height: 7rpx;
+  display: flex;
+  justify-content: center
 }
 
 

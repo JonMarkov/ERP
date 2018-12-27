@@ -2,23 +2,22 @@
 <view class='launch_list'>
   <view class='list_left'>
     <view>时间</view>
-    <view class='left_img'>
-      <image src='../../image/logo.jpg'></image>
-      <image src='../../image/logo.jpg'></image>
+    <view class='left_img' bindtap='addTime' data-i="{{statusType?'1':'2'}}">
+      <image src='../../image/pulic/selection_arr.png'></image>
+      <image src='../../image/pulic/release_arr.png'></image>
     </view>
   </view>
 
-  <view class='list_right'>
-    <text>单据状态：全部</text>
+  <view class='list_right' bindtap='addDet'>
+    <text>单据状态：{{statusTxt}}</text>
     <view class='right_img'>
-      <image src='../../image/logo.jpg'></image>
+      <image src='../../image/pulic/quanbu.png'></image>
     </view>
   </view>
 </view>
 
-
 <!-- 报销单 -->
-<view class='refer' bindtap='ToPendingDet' data-flowId="{{item.flow_id}}"  data-index="{{item.wf_id}}" wx:for="{{fromList}}" wx:key="{{index}}">
+<view class='refer' bindtap='ToPendingDet' data-flowId="{{item.flow_id}}" data-index="{{item.wf_id}}" wx:for="{{fromList}}" wx:key="{{index}}">
   <view class='refer_title'>
     <text>{{item.flow_name}}</text>
   </view>
@@ -35,5 +34,22 @@
         <text>{{item.p_status ==1?'通过':'驳回'}}</text>
       </view>
     </view>
+  </view>
+</view>
+
+<!-- 遮罩层 -->
+<view class="mask" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+<!-- 弹出层 -->
+<view class="modalDlg" wx:if="{{showModal}}">
+  <!-- 内容 -->
+  <view class='mask_one'>
+    <text class="{{selOne?'mask_text_sel':'mask_text'}}" bindtap='selOne' data-i="-1">全部</text>
+    <text class="{{selTwo?'mask_text_sel':'mask_text'}}" bindtap='selTwo' data-i="0">待审核</text>
+    <text class="{{selThree?'mask_text_sel':'mask_text'}}" bindtap='selThree' data-i="2">已通过</text>
+  </view>
+  <view class='mask_one'>
+    <text class="{{selFour?'mask_text_sel':'mask_text'}}" bindtap='selFour' data-i="1">审核中</text>
+    <text class="{{selFive?'mask_text_sel':'mask_text'}}" bindtap='selFive' data-i="3">已驳回</text>
+    <text class="{{selSix?'mask_text_sel':'mask_text'}}" bindtap='selSix' data-i="4">已撤回</text>
   </view>
 </view>

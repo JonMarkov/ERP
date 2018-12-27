@@ -71,20 +71,23 @@ page {
 }
 
 .launch_list image {
-  width: 20rpx;
-  height: 20rpx;
+  width: 29rpx;
+  height: 15rpx;
 }
 
 .list_left {
   display: flex;
   flex-direction: row;
 }
-
+.right_img{
+  margin-left: 5rpx
+}
 .left_img {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-left: 5rpx
 }
 
 .list_right {
@@ -134,4 +137,44 @@ page {
 }
 .con_one{
   margin-left: 36rpx
+}
+
+
+/* 弹出层里面的文字 */
+
+.text {
+  text-align: justify;
+  font-size: 14px;
+  color: #666;
+  width: 180px;
+  margin-top: 10px;
+}
+
+.mask_one {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 90%;
+  padding: 20rpx;
+}
+
+.mask_text {
+  border: 1rpx solid #8ebaf7;
+  /* padding: 10rpx 60rpx; */
+  color: #8ebaf7;
+  border-radius: 10rpx;
+  font-size: 26rpx;
+  width: 120rpx;
+  text-align: center;
+}
+
+.mask_text_sel {
+  border: 1rpx solid #8ebaf7;
+  /* padding: 10rpx 60rpx; */
+  color: #fff;
+  border-radius: 10rpx;
+  font-size: 26rpx;
+  background: #8ebaf7;
+  width: 120rpx;
+  text-align: center;
 }
