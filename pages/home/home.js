@@ -20,6 +20,34 @@ Page({
   onLoad: function(options) {
 
   },
+  huancun: function() {
+    var user_id = this.data.user.user_id
+    wx.request({
+      url: phoneUrl,
+      method: "POST",
+      data: {
+        service: "selectCountApproval",
+        user_id: this.data.user.user_id
+      },
+      header: {
+        "content-type": "application/json"
+      },
+      success: function(res) {
+        console.log(res.data)
+        // 缓存餐补
+        wx.setStorage({
+          key: "foodAllowance",
+          data: res.data.foodAllowance
+        })
+        // 缓存出差补助
+        wx.setStorage({
+          key: "travelAllowance",
+          data: res.data.travelAllowance
+        })
+      }
+    })
+
+  },
   // 我发起的-跳转
   ToLaunch: function() {
     // 把跳转信息本地缓存
@@ -101,7 +129,19 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-    this.httpNotice()
+    var that = this
+    wx.getStorage({
+      key: "user",
+      success: function(res) {
+        that.setData({
+          user: res.data
+        })
+        that.httpNotice()
+        that.huancun()
+      }
+
+    })
+
   },
 
   /**

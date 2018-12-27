@@ -116,3 +116,10 @@ canvas {
     margin-left: -220rpx;
     transform: scale(0.6)
 }
+.text_icon i{
+  position: absolute;
+  top:242rpx;
+  right: 160rpx;
+  font-size: 22rpx;
+  color: #fff
+}

@@ -58,16 +58,16 @@ Page({
             key: "user",
             data: res.data
           })
-          // 缓存餐补
-          wx.setStorage({
-            key: "foodAllowance",
-            data: res.data.foodAllowance
-          })
-          // 缓存出差补助
-          wx.setStorage({
-            key: "travelAllowance",
-            data: res.data.travelAllowance
-          })
+          // // 缓存餐补
+          // wx.setStorage({
+          //   key: "foodAllowance",
+          //   data: res.data.foodAllowance
+          // })
+          // // 缓存出差补助
+          // wx.setStorage({
+          //   key: "travelAllowance",
+          //   data: res.data.travelAllowance
+          // })
 
           wx.switchTab({
             url: '/pages/home/home',
@@ -81,6 +81,7 @@ Page({
         }
       }
     })
+    
   },
   // 跳转验证码登录
   ToCode: function() {

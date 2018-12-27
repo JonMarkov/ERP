@@ -1,4 +1,5 @@
 // pages/travel_three/travel.js
+// pictureUpload  上传图请求接口   images_path  图片  多张
 var phoneUrl = getApp().globalData.wx_url_1;
 Page({
 
@@ -10,9 +11,9 @@ Page({
     invoice: [{
       index: 0,
       id: 0,
-      type: '1',
       images: [],
-      imagesBase: []
+      imagesBase: [],
+      listMa: []
     }]
   },
 
@@ -28,13 +29,12 @@ Page({
 
     })
   },
-  // 添加
+  // 添加一列
   ToAddList: function() {
     var inList = this.data.invoice
     var temp = {
       index: 0,
       id: inList.length,
-      type: '',
       images: [],
       imagesBase: []
     }
@@ -47,6 +47,7 @@ Page({
   },
   // 添加图片
   bindChooiceProduct: function(e) {
+    console.log(this.data)
     // 点击的当前索引
     var index = e.currentTarget.dataset.index
     // 当前的发票数据列表
@@ -126,34 +127,66 @@ Page({
     // 给旧值赋新值
     this.data.invoice[index].index = Number(new_index);
     var inIndex = this.data.invoice;
-    console.log(inIndex)
-    console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       invoice: inIndex
     })
   },
+
+  // 提交图片转http路径
   ToTapSub: function() {
-    console.log(this.data)
-    var ListImg = this.data.invoice
-    var pic_list = []
-    for (var i in ListImg) {
-      console.log(i)
-      var typeWZ = this.data.array[ListImg[i].index]
-      var temp = {
-        pic_str: ListImg[i].imagesBase,
-        type: typeWZ
-      }
-      pic_list.push(temp)
+    var _this = this
+    var inList = this.data.invoice
+    var maLit = []
+    for (var i in inList) {
+      var imagesPath = inList[i].imagesBase.join(',')
+      console.log(imagesPath)
+      wx.request({
+        url: phoneUrl,
+        method: "POST",
+        data: {
+          service: "pictureUpload",
+          images_path: imagesPath
+        },
+        header: {
+          "content-type": "application/json"
+        },
+        success: function(e) {
+          var temp = {
+            tempList: e.data.urlList
+          }
+          maLit.push(temp)
+          _this.maListHttp(maLit)
+        }
+      })
     }
-    console.log(pic_list)
+    console.log(this.data.invoice)
+  },
+  // 转换路径后提交
+  maListHttp: function(maLit) {
+    this.setData({
+      HttpImgList: maLit
+    })
+    var ListImg = this.data.HttpImgList
+    var ListType = this.data.invoice
+    var picMlist = []
+    for (var i in ListImg) {
+      console.log(ListType[i])
+      console.log(ListImg[i])
+      var tempM = {
+        type: ListType[i].index,
+        pic_str: ListImg[i].tempList
+      }
+      picMlist.push(tempM)
+    }
+    console.log(picMlist)
     wx.request({
       url: phoneUrl,
       method: "POST",
       data: {
         service: "submitTravelCostThree",
-        flow_no: this.data.flow_no,
+        flow_no: '20181226171549731540515',
         user_id: this.data.user.user_id,
-        m_list: pic_list
+        m_list: picMlist
       },
       header: {
         "content-type": "application/json"
@@ -168,6 +201,7 @@ Page({
         }
       }
     })
+    console.log(this.data)
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

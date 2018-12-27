@@ -1,11 +1,11 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/travel_three/travel",
     "pages/travel_one/travel_see",
     "pages/travel_one/travel",
-    "pages/travel_three/travel",
     "pages/travel_three/travel_see",
-    "pages/travel _two/travel",
+    "pages/travel_two/travel",
     "pages/travel_two/travel_see",
     "pages/home/home",
     "pages/approval_out/approval_out",
