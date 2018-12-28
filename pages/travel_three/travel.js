@@ -161,6 +161,7 @@ Page({
   },
   // 转换路径后提交
   maListHttp: function(maLit) {
+    var flow_on = this.data.flow_no
     this.setData({
       HttpImgList: maLit
     })
@@ -182,7 +183,7 @@ Page({
       method: "POST",
       data: {
         service: "submitTravelCostThree",
-        flow_no: '20181226171549731540515',
+        flow_no: flow_on,
         user_id: this.data.user.user_id,
         m_list: picMlist
       },
@@ -227,6 +228,15 @@ Page({
         })
       }
     })
+    wx.getStorage({
+      key: "flow_no",
+      success: function (res) {
+        that.setData({
+          flow_no: res.data
+        })
+      }
+    })
+    
 
   },
 

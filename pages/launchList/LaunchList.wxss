@@ -188,3 +188,16 @@ page {
   width: 120rpx;
   text-align: center;
 }
+.zw{
+  margin-top: 30rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 26rpx;
+  color: #ccc
+}
+.zw image{
+  width: 126rpx;
+  height: 130rpx
+}

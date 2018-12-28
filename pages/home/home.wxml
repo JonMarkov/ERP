@@ -29,7 +29,7 @@
       <view class='text_icon'>
         <image src='../../image/pulic/pending_icon.png' class='icon_99'></image>
         <text class='wenzi'>待我审批</text>
-        <i>123</i>
+        <i>{{count}}</i>
       </view>
     </view>
   </view>

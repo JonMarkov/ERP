@@ -6,6 +6,10 @@ page {
   align-items: center;
   width: 100%;
 }
+.borImage{
+  width: 40rpx;
+  height: 40rpx
+}
 
 /* 情况按钮 */
 

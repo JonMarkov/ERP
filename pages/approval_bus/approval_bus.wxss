@@ -27,12 +27,18 @@ page{
   border-bottom: 1rpx solid #f4f4f6;
   font-size: 26rpx
 }
+.con image{
+  margin-bottom: 20px;
+  margin-right: 30rpx;
+  width: 67rpx;
+  height: 5rpx
+}
 /* icon图表 */
 .icon_sp{
   margin-top: 20rpx;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: center;
   width: 100%
 }
 .con {

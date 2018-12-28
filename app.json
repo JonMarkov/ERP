@@ -1,6 +1,8 @@
 {
   "pages": [
+    
     "pages/index/index",
+    "pages/business/business",
     "pages/travel_three/travel",
     "pages/travel_one/travel_see",
     "pages/travel_one/travel",

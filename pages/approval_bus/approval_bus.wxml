@@ -35,23 +35,10 @@
     </view>
     <view class='icon_sp'>
       <!-- icon图表 -->
-      <view class='con'>
-        <view class='bow'>杨总</view>
-        <view class='bow_icon'>已同意</view>
-      </view>
-      <view class='right_dian'>
-        <image src='../../image/pulic/dian.png'></image>
-      </view>
-      <view class='con'>
-        <view class='bow'>杨总</view>
-        <view class='bow_icon'>已同意</view>
-      </view>
-      <view class='right_dian'>
-        <image src='../../image/pulic/dian.png'></image>
-      </view>
-      <view class='con'>
-        <view class='bow'>杨总</view>
-        <view class='bow_icon'>已同意</view>
+      <view class='con' wx:for="{{pList}}">
+        <image src='../../image/pulic/dian.png' wx:if="{{index!=0}}"></image>
+        <view class='bow'>{{item.operate_user_name}}</view>
+        <view class='bow_icon'>{{item.status}}</view>
       </view>
     </view>
   </view>
@@ -67,6 +54,7 @@
   <!-- 待审批显示结束 -->
   <view class="container" class="zn-uploadimg" wx:if="{{MaStatus=='0'}}">
     <text bindtap="ToRecall" data-status='reject'>撤回申请</text>
-    <text bindtap="ToEdit" data-status='adopt'>再次编辑提交</text>
+    <text bindtap="ToEdit" data-status='adopt' wx:if="{{editTwo}}">再次编辑提交</text>
+    <text bindtap="ToBack" data-status='adopt' wx:else>返回</text>
   </view>
 </view>

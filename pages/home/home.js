@@ -22,6 +22,7 @@ Page({
   },
   huancun: function() {
     var user_id = this.data.user.user_id
+    var that = this
     wx.request({
       url: phoneUrl,
       method: "POST",
@@ -34,6 +35,14 @@ Page({
       },
       success: function(res) {
         console.log(res.data)
+        that.setData({
+          count: res.data.count
+        })
+        // 缓存餐补
+        wx.setStorage({
+          key: "count",
+          data: res.data.count
+        })
         // 缓存餐补
         wx.setStorage({
           key: "foodAllowance",
@@ -48,6 +57,23 @@ Page({
     })
 
   },
+  // toDet:function(){
+  //   var that = this
+  //   wx.request({
+  //     url: phoneUrl,
+  //     method: "POST",
+  //     data: {
+  //       service: "selectCountApproval",
+  //       user_id:this.data.user.user_id
+  //     },
+  //     header: {
+  //       "content-type": "application/json"
+  //     },
+  //     success: function (res) {
+  //   console.log(res)
+  //     }
+  //   })
+  // },
   // 我发起的-跳转
   ToLaunch: function() {
     // 把跳转信息本地缓存
@@ -138,6 +164,7 @@ Page({
         })
         that.httpNotice()
         that.huancun()
+        // that.toDet()
       }
 
     })

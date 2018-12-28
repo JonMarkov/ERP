@@ -1,5 +1,9 @@
+<view class='zw' wx:if="{{fromList.length==0}}">
+<image src='../../image/pulic/zw_dsp.png'></image>
+<text>暂时没有您要处理得订单</text>
+</view>
 <!-- 报销单 -->
-<view class='refer' bindtap='ToPendingDet' data-userName="{{item.operate_user_name}}" data-flowId="{{item.flow_id}}" data-index="{{item.wf_id}}" wx:for="{{fromList}}" wx:key="">
+<view class='refer' bindtap='ToPendingDet' data-flowNo="{{item.flow_no}}" data-userName="{{item.operate_user_name}}" data-flowId="{{item.flow_id}}" data-index="{{item.wf_id}}" wx:for="{{fromList}}" wx:key="">
   <view class='refer_title'>
     <text>{{item.flow_name}}</text>
   </view>

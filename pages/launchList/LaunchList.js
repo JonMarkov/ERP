@@ -6,13 +6,15 @@ Page({
    * 页面的初始数据
    */
   data: {
+    sx: true,
+    jx: false,
     showModal: false,
     statusTxt: '全部',
     statusType: false,
     status: '',
+    type: '1',
     status_tpye: '',
-    fromList: [
-    ]
+    fromList: []
   },
 
   /**
@@ -30,14 +32,14 @@ Page({
   // 点击弹出之后的选择
   // 类型一状态
   selOne: function(e) {
-    var status = e.currentTarget.dataset.i
+    var status = parseInt(e.currentTarget.dataset.i)
     var type = this.data.type
     this.setData({
       showModal: false,
       statusTxt: '全部',
       status: status
     })
-    this.applyErgodi(type,status)
+    this.applyErgodi(type, status)
 
   },
   // 类型二状态
@@ -49,7 +51,7 @@ Page({
       statusTxt: '待审核',
       status: status
     })
-    this.applyErgodi(type,status)
+    this.applyErgodi(type, status)
   },
   // 类型三状态
   selThree: function(e) {
@@ -60,7 +62,7 @@ Page({
       statusTxt: '已通过',
       status: status
     })
-    this.applyErgodi(type,status)
+    this.applyErgodi(type, status)
   },
   // 类型四状态
   selFour: function(e) {
@@ -71,7 +73,7 @@ Page({
       statusTxt: '审核中',
       status: status
     })
-    this.applyErgodi(type,status)
+    this.applyErgodi(type, status)
   },
   // 类五状态
   selFive: function(e) {
@@ -82,7 +84,7 @@ Page({
       statusTxt: '已驳回',
       status: status
     })
-    this.applyErgodi(type,status)
+    this.applyErgodi(type, status)
   },
   // 类型六状态
   selSix: function(e) {
@@ -99,38 +101,39 @@ Page({
   ToPendingDet: function(e) {
     console.log(this.data)
     console.log(e)
+    var flowNo = e.currentTarget.dataset.flowno
     var index = e.currentTarget.dataset.index;
     var flowId = e.currentTarget.dataset.flowid;
     var username = e.currentTarget.dataset.username
     // 出差审批单
     if (index == 2) {
       wx.navigateTo({
-        url: '/pages/approval_out/approval_out?flow_id=' + flowId + '&operateUserName=' + username,
+        url: '/pages/approval_out/approval_out?flow_id=' + flowId + '&operateUserName=' + username + "&wf_id=" + index,
       })
       // 公车使用单
     } else if (index == 4) {
       wx.navigateTo({
-        url: '/pages/approval_bus/approval_bus?flow_id=' + flowId + '&operateUserName=' + username,
+        url: '/pages/approval_bus/approval_bus?flow_id=' + flowId + '&operateUserName=' + username + "&wf_id=" + index,
       })
       // 合同审批单
     } else if (index == 5) {
       wx.navigateTo({
-        url: '/pages/approval_contract/approval_contract?flow_id=' + flowId + '&operateUserName=' + username,
+        url: '/pages/approval_contract/approval_contract?flow_id=' + flowId + '&operateUserName=' + username + "&wf_id=" + index,
       })
       // 业务招待
     } else if (index == 3) {
       wx.navigateTo({
-        url: '/pages/approval_entertain/approval_entertain?flow_id=' + flowId + '&operateUserName=' + username,
+        url: '/pages/approval_entertain/approval_entertain?flow_id=' + flowId + '&operateUserName=' + username + "&wf_id=" + index,
       })
       // 差旅
     } else if (index == 1) {
       wx.navigateTo({
-        url: '/pages/travel_one/travel_see?flow_id=' + flowId + '&operateUserName=' + username,
+        url: '/pages/business/business?flow_id=' + flowId + '&operateUserName=' + username + "&wf_id=" + index + "&flow_no=" + flowNo,
       })
     }
   },
   // 遍历
-  applyErgodi: function(type,status) {
+  applyErgodi: function(type, status) {
     var that = this
     wx.request({
       url: phoneUrl,
@@ -181,7 +184,7 @@ Page({
       }
     })
   },
-  addTime: function (e) {
+  addTime: function(e) {
     console.log(e.currentTarget.dataset.i)
     var type = e.currentTarget.dataset.i
     var status = this.data.status
@@ -199,6 +202,17 @@ Page({
       })
     }
     this.applyErgodi(type, status)
+    if (type == 1) {
+      this.setData({
+        sx: true,
+        jx: false
+      })
+    } else {
+      this.setData({
+        jx: true,
+        sx: false
+      })
+    }
   },
   // 时间戳转换时间
   timestampToTime: function(timestamp) {
@@ -234,7 +248,7 @@ Page({
         // 遍历页面
         var status = -1
         var type = 1
-        that.applyErgodi(type,status)
+        that.applyErgodi(type, status)
       }
     })
   },

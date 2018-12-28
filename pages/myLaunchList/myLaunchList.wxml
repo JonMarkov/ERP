@@ -3,8 +3,10 @@
   <view class='list_left' bindtap='addTime' data-i="{{statusType?'1':'2'}}">
     <view>时间</view>
     <view class='left_img'>
-      <image src='../../image/pulic/selection_arr.png'></image>
-       <image src='../../image/pulic/release_arr.png'></image>
+      <image src='../../image/pulic/selection_arr.png' wx:if="{{sx}}"></image>
+      <image src='../../image/pulic/release_arr_1.png' wx:if="{{jx}}"></image>
+      <image src='../../image/pulic/selection_arr_1.png' wx:if="{{jx}}"></image>
+      <image src='../../image/pulic/release_arr.png' wx:if="{{sx}}"></image>
     </view>
   </view>
 
@@ -16,9 +18,12 @@
   </view>
 </view>
 
-
+<view class='zw' wx:if="{{fromList.length == 0}}">
+  <image src='../../image/pulic/zw_wsp.png'></image>
+  <text>暂时没有内容</text>
+</view>
 <!-- 报销单 -->
-<view class='refer' bindtap='ToPendingDet' data-userName="{{item.operate_user_name}}" data-flowId="{{item.flow_id}}" data-index="{{item.wf_id}}" wx:for="{{fromList}}" wx:key="">
+<view class='refer' bindtap='ToPendingDet' data-flowNo="{{item.flow_no}}" data-userName="{{item.operate_user_name}}" data-flowId="{{item.flow_id}}" data-index="{{item.wf_id}}" wx:for="{{fromList}}" wx:key="">
   <view class='refer_title'>
     <text>{{item.flow_name}}</text>
   </view>
@@ -30,7 +35,7 @@
       <text>审批状态：{{item.status== -1?'待提交':item.status==0?'待审核':item.status==1?'审核中':item.status==2?'已完成(审核通过)':item.status==3?'审核驳回':'取消'}}</text>
     </view>
     <view class='content_right'>
- <!-- icon图表 -->
+      <!-- icon图表 -->
       <view class='con con_one' wx:if="{{item.p_list[1] !=''}}">
         <view class='bow'>{{item.p_list[0].operate_user_name}}</view>
         <view class='bow_icon'>已同意</view>

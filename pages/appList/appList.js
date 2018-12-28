@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    fromList:[]
   },
 
   /**
@@ -26,27 +26,27 @@ Page({
     // 出差审批单
     if (index == 2) {
       wx.navigateTo({
-        url: '/pages/approval_out/approval_out?flow_id=' + flowId + '&operateUserName=' + username,
+        url: '/pages/approval_out/approval_out?flow_id=' + flowId + '&operateUserName=' + username + "&wf_id=" + index,
       })
       // 公车使用单
     } else if (index == 4) {
       wx.navigateTo({
-        url: '/pages/approval_bus/approval_bus?flow_id=' + flowId + '&operateUserName=' + username,
+        url: '/pages/approval_bus/approval_bus?flow_id=' + flowId + '&operateUserName=' + username + "&wf_id=" + index,
       })
       // 合同审批单
     } else if (index == 5) {
       wx.navigateTo({
-        url: '/pages/approval_contract/approval_contract?flow_id=' + flowId + '&operateUserName=' + username,
+        url: '/pages/approval_contract/approval_contract?flow_id=' + flowId + '&operateUserName=' + username + "&wf_id=" + index,
       })
       // 业务招待
     } else if (index == 3) {
       wx.navigateTo({
-        url: '/pages/approval_entertain/approval_entertain?flow_id=' + flowId + '&operateUserName=' + username,
+        url: '/pages/approval_entertain/approval_entertain?flow_id=' + flowId + '&operateUserName=' + username + "&wf_id=" + index,
       })
       // 差旅
     } else if (index == 1) {
       wx.navigateTo({
-        url: '/pages/travel_one/travel?flow_id=' + flowId + '&operateUserName=' + username,
+        url: '/pages/business/business?flow_id=' + flowId + '&operateUserName=' + username + "&wf_id=" + index + "&flow_no=" + flowNo,
       })
     }
   },
@@ -97,6 +97,7 @@ Page({
         that.setData({
           fromList: FromList
         })
+        console.log(that.data)
       }
     })
   },

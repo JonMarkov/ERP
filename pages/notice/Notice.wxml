@@ -1,3 +1,7 @@
+<view class='zw' wx:if="{{txtlist == []}}">
+  <image src='../../image/pulic/zw_wfq.png'></image>
+  <text>暂时没有您发起的审批单</text>
+</view>
 <view class='notice' bindtap='ToNotice' data-index="{{item.id}}" wx:for="{{txtlist}}" wx:key="">
   <text class='notice_date'>{{item.createDate}}</text>
   <text class='notice_con'>{{item.name}}</text>

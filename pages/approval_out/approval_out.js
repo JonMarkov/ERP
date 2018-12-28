@@ -8,29 +8,61 @@ Page({
   data: {
     hiddenmodalput: true,
     //可以通过hidden是否掩藏弹出框的属性，来指定那个弹出框  
-    reason:''
+    reason: ''
   },
   // 点击跳转编辑页面
-  ToEdit: function () {
+  ToEdit: function() {
     console.log('跳转')
     wx.navigateTo({
       url: '',
     })
   },
+  ToBack: function () {
+    wx.navigateBack({
+
+    })
+  },
   // 撤回申请
-  ToRecall: function () {
-    console.log('撤回申请')
+  ToRecall: function() {
+    wx.request({
+      url: phoneUrl,
+      method: "POST",
+      data: {
+        service: "goBackForApproval",
+        user_id: this.data.user.user_id,
+        flow_id: this.data.flow_id,
+        wf_id: this.data.wf_id
+
+      },
+      header: {
+        "content-type": "application/json"
+      },
+      success: function(res) {
+        console.log(res)
+        if (res.data.result_desc == "不能撤回") {
+          wx.showModal({
+            title: '提示',
+            content: '审批中不能撤回',
+          })
+        } else {
+          wx.navigateTo({
+            url: '/pages/launchList/LaunchList'
+          })
+        }
+
+      }
+    })
   },
   //点击按钮弹窗指定的hiddenmodalput弹出框  
-  ToReject: function () {
+  ToReject: function() {
     this.setData({
       hiddenmodalput: !this.data.hiddenmodalput,
-      status:'reject',
-      reason:''
+      status: 'reject',
+      reason: ''
     })
     console.log(this.data)
   },
-  ToAdopt: function (e) {
+  ToAdopt: function(e) {
     this.setData({
       hiddenmodalput: !this.data.hiddenmodalput,
       status: 'adopt',
@@ -45,7 +77,7 @@ Page({
     });
   },
   // 监听审核弹出输入框
-  ToTestTk:function(e){
+  ToTestTk: function(e) {
     this.setData({
       reason: e.detail.value
     })
@@ -55,7 +87,7 @@ Page({
     var reason = this.data.reason;
     let status = this.data.status
     if (status == 'reject') {
-      if (reason == ''){
+      if (reason == '') {
         // 警告弹窗
         return
       }
@@ -79,6 +111,7 @@ Page({
     console.log(options)
     this.setData({
       flow_id: options.flow_id,
+      wf_id: options.wf_id
     })
   },
 
@@ -107,7 +140,7 @@ Page({
     })
     wx.getStorage({
       key: "MaStatus",
-      success: function (res) {
+      success: function(res) {
         that.setData({
           MaStatus: res.data
         })
@@ -130,6 +163,7 @@ Page({
       success: function(res) {
         console.log(res)
         var detList = res.data.travelApproval
+        var statusList = res.data.p_list
         var temp = {
           transportation: detList.transportation,
           mileage: detList.mileage || '',
@@ -143,12 +177,56 @@ Page({
           travelReason: detList.travelReason || ''
 
         }
+        var pList = []
+        for (var i in statusList) {
+          // 1为待审批  2为已审批
+          var type = statusList[i].type
+          var status = statusList[i].status
+          if (type == 1) {
+            var tempStatus = {
+              operate_user_name: statusList[i].operate_user_name,
+              status: "未审批",
+              sta: statusList[i].status
+            }
+            pList.push(tempStatus)
+          } else if (type == 2) {
+            var tempStatus = {
+              operate_user_name: statusList[i].operate_user_name,
+              status: statusList[i] == 0 ? "未审批" : statusList[i] == 1 ? "已通过" : "已驳回",
+              sta: statusList[i].status
+            }
+            pList.push(tempStatus)
+          } else {
+            var tempStatus = {
+              operate_user_name: statusList[i].operate_user_name,
+              status: "未审批",
+              sta: statusList[i].status
+            }
+            pList.push(tempStatus)
+          }
+        }
+
         that.setData({
-          detList: temp
+          detList: temp,
+          pList: pList
         })
         console.log(that.data)
+        that.ifBohui()
       }
     })
+  },
+  ifBohui: function() {
+    console.log(this.data)
+    var ifBo = this.data.pList
+    for (var i in ifBo) {
+      if (ifBo[i].sta == 2) {
+        this.setData({
+          editTwo: true
+        })
+      } else {
+        editTwo: false
+      }
+    }
   },
   // 时间戳转换时间
   timestampToTime: function(timestamp) {

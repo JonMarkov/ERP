@@ -190,3 +190,7 @@ height:10rpx;
   flex-direction: column;
   justify-content: center
 }
+.borImage{
+  width: 40rpx;
+  height: 40rpx
+}

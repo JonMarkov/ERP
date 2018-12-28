@@ -1,19 +1,102 @@
-page{
-  background: #ccc;
-  width: 100%;
-}
-.vipCen{
+.vipCen {
   padding: 20rpx 0;
   background: #fff;
   display: flex;
   flex-direction: column;
   width: 100%;
-  justify-content: center
+  justify-content: center;
 }
-.vipCen view{
+
+.vipCen view {
   padding: 10rpx 10rpx;
   display: flex;
   justify-content: space-between;
   font-size: 26rpx;
-  color: #444444
+  color: #444;
+}
+
+page {
+  background: #ebebed;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20rpx;
+  flex-direction: column;
+}
+
+.vip_conten {
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  background: #fff;
+  border-radius: 10rpx;
+  margin-top: 10rpx;
+  padding: 10rpx 20rpx;
+  align-items: center;
+}
+
+.vip_conten image {
+  width: 177rpx;
+  height: 120rpx;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+}
+
+.vip_count i {
+  font-size: 22rpx;
+  margin-left: -48rpx;
+  margin-top: 58rpx;
+  color: #fff
+}
+
+.vip_conten text {
+  font-size: 32rpx;
+  margin-left: 30rpx;
+}
+
+.vip_xiugai text {
+  font-size: 32rpx;
+  margin-left: 106rpx;
+}
+
+.vip_xiugai {
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  background: #fff;
+  border-radius: 10rpx;
+  margin-top: 10rpx;
+  padding: 10rpx 20rpx;
+  align-items: center;
+}
+
+.vip_xiugai image {
+  width: 96rpx;
+  height: 132rpx;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+}
+.vip_count{
+   width: 90%;
+  display: flex;
+  flex-direction: row;
+  background: #fff;
+  border-radius: 10rpx;
+  margin-top: 10rpx;
+  padding: 10rpx 20rpx;
+  align-items: center;
+}
+.vip_count image{
+    width: 177rpx;
+  height: 120rpx;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+}
+.vip_count text {
+  font-size: 32rpx;
+  margin-left: 64rpx;
 }

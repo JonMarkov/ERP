@@ -6,11 +6,15 @@ Page({
    * 页面的初始数据
    */
   data: {
+    sx: true,
+    jx: false,
     showModal: false,
     statusTxt: '全部',
     statusType: false,
     status: '',
-    status_tpye: ''
+    type:'1',
+    status_tpye: '',
+    fromList:[]
   },
 
   /**
@@ -101,22 +105,30 @@ Page({
     var index = e.currentTarget.dataset.index;
     var flowId = e.currentTarget.dataset.flowid;
     var username = e.currentTarget.dataset.username
+    // 出差审批单
     if (index == 2) {
       wx.navigateTo({
-        url: '/pages/approval_out/approval_out?flow_id=' + flowId + '&operateUserName=' + username,
+        url: '/pages/approval_out/approval_out?flow_id=' + flowId + '&operateUserName=' + username + "&wf_id=" + index,
       })
+      // 公车使用单
     } else if (index == 4) {
       wx.navigateTo({
-        url: '/pages/approval_bus/approval_bus?flow_id=' + flowId + '&operateUserName=' + username,
+        url: '/pages/approval_bus/approval_bus?flow_id=' + flowId + '&operateUserName=' + username + "&wf_id=" + index,
       })
-    } else if ('合同审批') {
+      // 合同审批单
+    } else if (index == 5) {
       wx.navigateTo({
-        url: '/pages/approval_contract/approval_contract?flow_id=' + flowId + '&operateUserName=' + username,
+        url: '/pages/approval_contract/approval_contract?flow_id=' + flowId + '&operateUserName=' + username + "&wf_id=" + index,
       })
-    } else {
-      console.log('业务招待')
+      // 业务招待
+    } else if (index == 3) {
       wx.navigateTo({
-        url: '/pages/approval_entertain/approval_entertain?flow_id=' + flowId + '&operateUserName=' + username,
+        url: '/pages/approval_entertain/approval_entertain?flow_id=' + flowId + '&operateUserName=' + username + "&wf_id=" + index,
+      })
+      // 差旅
+    } else if (index == 1) {
+      wx.navigateTo({
+        url: '/pages/business/business?flow_id=' + flowId + '&operateUserName=' + username + "&wf_id=" + index + "&flow_no=" + flowNo,
       })
     }
   },
@@ -138,6 +150,17 @@ Page({
       })
     }
     this.applyErgodi(type, status)
+    if (type == 1) {
+      this.setData({
+        sx: true,
+        jx: false
+      })
+    } else {
+      this.setData({
+        jx: true,
+        sx: false
+      })
+    }
   },
   // 遍历
   applyErgodi: function(type, status) {

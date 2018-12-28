@@ -1,17 +1,31 @@
 <view class='vipCen'>
   <view class='cen_one'>
-    <text>姓名：张三</text>
+    <text>姓名：{{user.user_name}}</text>
     <text>手机号：13121928345</text>
   </view>
   <view class='cen_two'>
-    <text>部门：财务部</text>
-    <text>职位：财务经理</text>
+    <text>部门：{{user.dept_name}}</text>
+    <text>职位：{{user.role}}</text>
   </view>
 </view>
-
-<view class='vipXx'>
-  <view>
-  </view>
-  <view>
-  </view>
+<view class='vip_count' bindtap='ToPending'>
+  <image src='../../image/pulic/pending_icon.png'></image>
+  <i>{{count}}</i>
+  <text>待我审批</text>
+</view>
+<view class='vip_conten' bindtap='ToLaunch'>
+  <image src='../../image/pulic/started_icon.png'></image>
+  <text>我发起的</text>
+</view>
+<view class='vip_conten' bindtap='ToApproval'>
+  <image src='../../image/pulic/approval_icon.png'></image>
+  <text>我审批的</text>
+</view>
+<view class='vip_conten'>
+  <image src='../../image/pulic/Journal_icon.png'></image>
+  <text>我的日志</text>
+</view>
+<view class='vip_xiugai'>
+  <image src='../../image/pulic/xiugai.png'></image>
+  <text>修改密码</text>
 </view>
